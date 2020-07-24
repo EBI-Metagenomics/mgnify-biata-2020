@@ -117,9 +117,4 @@ RUN git clone https://github.com/merenlab/anvio.git /usr/local/anvio \
     && pip3 install anvio
 ## Install FigTree
 ########
-ADD https://github.com/rambaut/figtree/archive/v1.4.4.tar.gz /usr/local/FigTree_v1.4.4.tgz
-RUN tar xvf /usr/local/FigTree_v1.4.4.tgz -C /usr/local/ \
-    && chmod 777 -R /usr/local/FigTree_v1.4.4 \
-    && sed -i 's/lib\/figtree.jar/\/usr\/local\/FigTree_v1.4.4\/lib\/figtree.jar/g' /usr/local/FigTree_v1.4.4/bin/figtree \
-    && ln -s /usr/local/FigTree_v1.4.4/bin/figtree /usr/local/bin/ \
-    && rm /usr/local/FigTree_v1.4.4.tgz
+RUN apt-get update -y && apt-get install -y figtree
