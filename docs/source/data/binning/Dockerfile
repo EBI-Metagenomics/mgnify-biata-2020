@@ -108,14 +108,6 @@ RUN tar xvf /usr/local/bedtools-2.27.1.tar.gz -C /usr/local/ \
     && make \
     && make install \
     && rm /usr/local/bedtools-2.27.1.tar.gz
-## Install FigTree
-########
-ADD https://github.com/rambaut/figtree/releases/download/v1.4.4/FigTree_v1.4.4.tgz COPY /usr/local/FigTree_v1.4.4.tgz
-RUN tar xvf /usr/local/FigTree_v1.4.4.tgz -C /usr/local/ \
-    && chmod 777 -R /usr/local/FigTree_v1.4.4 \
-    && sed -i 's/lib\/figtree.jar/\/usr\/local\/FigTree_v1.4.4\/lib\/figtree.jar/g' /usr/local/FigTree_v1.4.4/bin/figtree \
-    && ln -s /usr/local/FigTree_v1.4.4/bin/figtree /usr/local/bin/ \
-    && rm /usr/local/FigTree_v1.4.4.tgz
 ## Install Anvio
 ########
 RUN git clone https://github.com/merenlab/anvio.git /usr/local/anvio \
@@ -123,3 +115,11 @@ RUN git clone https://github.com/merenlab/anvio.git /usr/local/anvio \
     && chmod 777 -R /usr/local/anvio/ \
     && pip3 install -r requirements.txt \
     && pip3 install anvio
+## Install FigTree
+########
+ADD https://github.com/rambaut/figtree/archive/v1.4.4.tar.gz /usr/local/FigTree_v1.4.4.tgz
+RUN tar xvf /usr/local/FigTree_v1.4.4.tgz -C /usr/local/ \
+    && chmod 777 -R /usr/local/FigTree_v1.4.4 \
+    && sed -i 's/lib\/figtree.jar/\/usr\/local\/FigTree_v1.4.4\/lib\/figtree.jar/g' /usr/local/FigTree_v1.4.4/bin/figtree \
+    && ln -s /usr/local/FigTree_v1.4.4/bin/figtree /usr/local/bin/ \
+    && rm /usr/local/FigTree_v1.4.4.tgz
