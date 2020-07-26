@@ -9,33 +9,39 @@ Assembling data
 - Co-assembly
 
 *Prerequisites*
+---------------
 
 For this tutorial you will need to make a working directory to store
 your data in. 
 
+.. code-block:: bash
+
    mkdir -p ~/BiATA/session1/data
-   
-   chmod -R 777 ~/BiATA  
-   
+   chmod -R 777 ~/BiATA
    export DATADIR=~/BiATA/session1/data
 
 In this directory, downloaded the tarball from **[INSERT URL]**
 
+.. code-block:: bash
+
    cd  ~/BiATA/session1/data
-
    wget -q [INSERT URL]
-
    tar xzvf session1.tgz
 
 Now makes sure that you have pulled the docker container
+
+.. code-block:: bash
 
     docker pull microbiomeinformatics/biata-qc-assembly
 
 Finally, start the docker container in the following way:
 
-    docker run --rm -it  -e DISPLAY=$DISPLAY  -v $DATADIR:/opt/data -v /tmp/.X11-unix:/tmp/.X11-unix:rw  -e DISPLAY=docker.for.mac.localhost:0 biata-qc-assembly
+.. code-block:: bash
+
+   docker run --rm -it  -e DISPLAY=$DISPLAY  -v $DATADIR:/opt/data -v /tmp/.X11-unix:/tmp/.X11-unix:rw  -e DISPLAY=docker.for.mac.localhost:0 biata-qc-assembly
 
 *Part 1 - Quality control and filtering of the raw sequence files*
+------------------------------------------------------------------
 
 |image1|\ Learning Objectives - in the following exercises you will learn
 how to check on the quality of short read sequences: identify the
@@ -43,14 +49,15 @@ presence of adaptor sequences, remove both adaptors and low quality
 sequences. You will also learn how to construct a reference database for
 host decontamination. 
 
-|image2|\ First go to your working area, the data that you downloaded
-has been mounted in /opt/data in the docker container.
+|image2|\  First go to your working area, the data that you downloaded
+has been mounted in ``/opt/data`` in the docker container.
+
+.. code-block:: bash
 
    cd /opt/data
-   
    ls
 
-|image3|\ Here you should see the same contents as you had from
+|image3|\  Here you should see the same contents as you had from
 downloading and uncompressing the session data. As we write into this
 directory, we should be able to see this from inside the container, and
 on the filesystem of the computer running this container. We will use
@@ -58,18 +65,17 @@ this to our advantage as we go through this practical. Unless stated
 otherwise all of the following commands should be executed in the
 terminal running the Docker container.
 
-|image4|\ Generate a directory of the fastqc results
+|image4|\  Generate a directory of the fastqc results
+
+.. code-block:: bash
 
     cd /opt/data
-    
     mkdir fastqc_results
-    
     fastqc oral_human_example_1_splitaa.fastq.gz  --outdir fastqc_results
-
     fastqc oral_human_example_2_splitaa.fastq.gz  --outdir fastqc_results
 
-|image5|\ Now on your **local** computer, go to the browser, and
-File->Open File. Use the file navigator to select the following file
+|image5|\  Now on your **local** computer, go to the browser, and
+``File -> Open File``. Use the file navigator to select the following file
 
     ~/BiATA/session1/data/fastqc_results/oral_human_example_1_splitaa_fastqc.html
 
@@ -77,7 +83,7 @@ File->Open File. Use the file navigator to select the following file
 
 Spend some time looking at the 'Per base sequence quality’. 
 
-|image7|\ For each position a BoxWhisker type plot is drawn. The
+|image7|\  For each position a BoxWhisker type plot is drawn. The
 elements of the plot are as follows:
 
 -  The central red line is the median value
@@ -95,8 +101,8 @@ into very good quality calls (green), calls of reasonable quality
 platforms will degrade as the run progresses, so it is common to see
 base calls falling into the orange area towards the end of a read.
 
-|image8|\ What does this tell you about your sequence data? When do the
-errors s/tart? 
+|image8|\  What does this tell you about your sequence data? When do the
+errors start? 
 
 In the pre-processed files we see two warnings, as shown on the left
 side of the report. Navigate to the “Per bases sequence content"
@@ -110,7 +116,7 @@ differences. Why do you think that is?
 |image11|\ Open up the FastQC report corresponding to the reversed
 reads. 
 
-|image12|\ Are there any significant differences between to the forward
+|image12|\  Are there any significant differences between to the forward
 and reverse files?
 
 For more information on the FastQC report, please consult the
@@ -122,31 +128,32 @@ to look at many files. The tool multiqc aggregates the FastQC results
 across many samples and creates a single report for easy comparison.
 Here we will demonstrate the use of this tool
 
+.. code-block:: bash
+
     cd /opt/data
-    
     mkdir multiqc_results
-    
     multiqc fastqc_results -o multiqc_results
 
 In this case, we provide the folder containing the fastqc results to
 multiqc and the -o allows us to set the output directory for this
 summarised report.
 
-|image14|\ Now on your **local** computer, open the summary report from
-MultiQC. To do so, go to your browser, and use File->Open File. Use the
+|image14|\  Now on your **local** computer, open the summary report from
+MultiQC. To do so, go to your browser, and use ``File -> Open File``. Use the
 file navigator to select the following file
-~/BiATA/session1/data//multiqc_results/multiqc_report.html
+
+  ~/BiATA/session1/data//multiqc_results/multiqc_report.html
 
 |image15|\
 
-|image16|\ Scroll down through the report. The sequence quality
+|image16|\  Scroll down through the report. The sequence quality
 histograms show the following results from each file as two separate
 lines. The 'Status Checks’ show a matrix of which samples passed check
 and which ones have problems. 
 
 |image17|\ What fraction of reads are duplicates? 
 
-|image18|\ So, far we have looked at the raw files and assessed their
+|image18|\  So, far we have looked at the raw files and assessed their
 content, but we have not done anything about removing duplicates,
 sequences with low quality scores or removal of the adaptors. So, lets
 start this process. The first step in the process is to make a database
@@ -155,10 +162,12 @@ screen for human DNA (which may come from the host and/or staff
 performing the experiment). However, if the sample is say from mouse,
 you would want to download the the mouse genome. 
 
-|image19|\ In the following exercise, we are going to use two “genomes”
+|image19|\  In the following exercise, we are going to use two “genomes”
 already downloaded for you in the decontamination folder. To make this
 tutorial quicker and smaller in terms of file sizes, we are going to use
 PhiX (a common spike in) and just chromosome 10 from human.  
+
+.. code-block:: bash
 
     cd /opt/data/decontamination
 
@@ -166,13 +175,17 @@ For the next step we need one file, so we want to merge the two
 different fasta files. This is simply done using the command line tool
 cat.
 
+.. code-block:: bash
+
     cat phix.fasta GRCh38_chr10.fasta > GRCh38_phix.fasta
 
 Now we need to build a bowtie index for them:
 
+.. code-block:: bash
+
     bowtie2-build GRCh38_phix.fasta  GRCh38_phix.index  
 
-|image20|\ It is possible to automatically download a pre-indexed human
+|image20|\  It is possible to automatically download a pre-indexed human
 genome in Bowtie2 format using the following command (but do not do this
 now, as this will take a while to download):
 
@@ -180,18 +193,21 @@ now, as this will take a while to download):
     | kneaddata_database --download human_genome bowtie2                   |
     +----------------------------------------------------------------------+
 
-|image21|\ Now we are going to use the GRCh38_phix database and clean-up
-our raw sequences.  kneaddata is a helpful wrapper script for a number
+|image21|\  Now we are going to use the `GRCh38_phix` database and clean-up
+our raw sequences. kneaddata is a helpful wrapper script for a number
 of pre-processing tools, including Bowtie2 to screen out contaminant
 sequences, and Trimmomatic to exclude low-quality sequences. We also
 have written wrapper scripts to run these tools (see below), but using
 kneaddata allows for more flexibility in options.
 
+.. code-block:: bash
+
     cd /opt/data/
-    
     mkdir clean
 
 We now need to uncompress the fastq files. 
+
+.. code-block:: bash
 
     gunzip -c oral_human_example_2_splitaa.fastq.gz > oral_human_example_2_splitaa.fastq
     gunzip -c oral_human_example_1_splitaa.fastq.gz > oral_human_example_1_splitaa.fastq
@@ -200,71 +216,74 @@ We now need to uncompress the fastq files. 
 
 |image22|\ The options above are:
 
-\* --input,  Input FASTQ file. This option is given twice as we have
-paired-end data.
-
-\* --output, Output directory.
-
-\*--reference-db Path to bowtie2 database for decontamination.
-
-\* -t # Number of threads to use (2 in this case).
-
-\* --trimmomatic-options Options for Trimmomatic to use, in quotations
-("SLIDINGWINDOW:4:20 MINLEN:50" in this case). See the Trimmomatic
-website for more options.
-
-\* --bowtie2-options Options for bowtie2 to use, in quotations. The
-options "--very-sensitive" and "--dovetail" set the alignment parameters
-to be very sensitive and sets cases where mates extend past each other
-to be concordant (i.e. they will be called as contaminants and be
-excluded).
-
-\* --remove-intermediate-output Intermediate files, including large
-FASTQs, will be removed.
++---------------------------------------------------------------------------------------------+
+|                                                                                             |
+| \* **--input**, Input FASTQ file. This option is given twice as we have paired-end data. */ |
+|                                                                                             |
+| \* **--output**, Output directory.                                                          |
+|                                                                                             |
+| \* **--reference-db**, Path to bowtie2 database for decontamination.                        |
+|                                                                                             |
+| \* **-t**, # Number of threads to use (2 in this case).                                     |
+|                                                                                             |
+| \* **--trimmomatic-options**, Options for Trimmomatic to use, in quotations                 |
+| ("SLIDINGWINDOW:4:20 MINLEN:50" in this case). See the Trimmomatic                          |
+| website for more options.                                                                   |
+|                                                                                             |
+| \* **--bowtie2-options**, Options for bowtie2 to use, in quotations. The                    |
+| options "--very-sensitive" and "--dovetail" set the alignment parameters                    |
+| to be very sensitive and sets cases where mates extend past each other                      |
+| to be concordant (i.e. they will be called as contaminants and be                           |
+| excluded).                                                                                  |
+|                                                                                             |
+| \* **--remove-intermediate-output**, Intermediate files, including large                    |
+| FASTQs, will be removed.                                                                    |
+|                                                                                             |
++---------------------------------------------------------------------------------------------+
 
 **Kneaddata generates multiple outputs in the “clean” directory,
 containing different 4 different files for each read.**
 
 |image23|\ Using what you have learned previously, generate a fastqc
-report for each of the oral_human_example_1_splitaa_kneaddata_paired
+report for each of the `oral_human_example_1_splitaa_kneaddata_paired`
 files.  Do this within the clean directory.
 
+.. code-block:: bash
+
     cd /opt/data/clean
-    
     mkdir fastqc_final
-    
     <you construct the command>
 
-|image24|\ Also generate a multiqc report and look at the sequence
+|image24|\  Also generate a multiqc report and look at the sequence
 quality historgrams. 
 
+.. code-block:: bash
+
     cd /opt/data/clean
-    
     mkdir multiqc
-    
     <you construct the command>
 
-|image25|\ View the multiQC report as before using your browser. You
+|image25|\  View the multiQC report as before using your browser. You
 should see something like this:
 
 |image26|\
 
-|image27|\ Open the previous MultiQC report and see if they have
+|image27|\  Open the previous MultiQC report and see if they have
 improved? 
 
-|image28|\ Did sequences at the 5’ end become uniform? Why might that
+|image28|\  Did sequences at the 5’ end become uniform? Why might that
 be? Is there anything that suggests that adaptor sequences were found? 
 
-|image29|\ To generate a summary file of how the sequence were
+|image29|\  To generate a summary file of how the sequence were
 categorised by Kneaddata, run the following command.  
 
+.. code-block:: bash
+
     cd /opt/data
-
     kneaddata_read_count_table --input /opt/data/clean --output kneaddata_read_counts.txt
-
     less kneaddata_read_counts.txt
 
-|image30|\ What fraction of reads have been deemed to be contaminating?
+|image30|\  What fraction of reads have been deemed to be contaminating?
 
 |image31|\ The reads have now be decontaminated any can be uploaded to
 ENA, one of the INSDC members. It is beyond the scope of this course to
@@ -305,10 +324,10 @@ metaspades. To make things faster, we are going to turn-off metaspades
 own read error correction method, by specifying the command
 --only-assembler. 
 
+.. code-block:: bash
+
     cd /opt/data
-
     mkdir assembly
-
     metaspades.py    -t    2    --only-assembler    -m    10    -1 /opt/data/clean/oral_human_example_1_splitaa_kneaddata_paired_1.fastq    -2    /opt/data/clean/oral_human_example_1_splitaa_kneaddata_paired_2.fastq    -o    /opt/data/assembly
 
 |image34|\ This takes about 1 hour to complete. 
@@ -322,6 +341,8 @@ Nucleotide:Nucleotide from the set of options). Leave all other options
 as default on the search page. To select the first 40 lines of sequence
 perform the following:
 
+.. code-block:: bash
+
     head -41 contigs.fasta
 
 |image36|\
@@ -330,10 +351,11 @@ perform the following:
 Does this make sense as a human oral bacteria? Are you surprised by this
 result at all?  
 
-|image38|\ Now let us consider some statistics about the entire assembly
+|image38|\  Now let us consider some statistics about the entire assembly
+
+.. code-block:: bash
 
     cd /opt/data/assembly
-    
     assembly_stats scaffolds.fasta
 
 |image39|\ This will output two simple tables in JSON format, but it is
@@ -366,7 +388,7 @@ graph.  Normally, I would recommend looking at the ‘
 assembly_graph.fastg, but our assembly is quite fragmented, so we will
 load up the assembly_graph_after_simplification.gfa.   
 
-|image44|\ At the terminal, type 
+|image44|\  At the terminal, type 
 
     Bandage
 
@@ -389,7 +411,7 @@ each distinct part of the assembly graph.
 |image46|\ Can you find any large, complex parts of the graph? If so,
 what do they look like. 
 
-|image47|\ In this particular sample, we believe that strains related to
+|image47|\  In this particular sample, we believe that strains related to
 the species *Rothia dentocariosa,* a Gram-positive, round- to rod-shaped
 bacteria that is part of the normal community of microbes residing in
 the mouth and respiratory tract, should be present in our sample. While
@@ -431,15 +453,18 @@ principles are the same. We have also pre-calculated some assemblies for
 you. In the co-assembly directory, there are already 2 assemblies.  We
 have a single paired-end assembly. 
 
+.. code-block:: bash
+
     megahit -1 clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq -2 clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq -o  coassembly/assembly1 -t 2 --k-list 23,51,77 
 
-|image50|\ Now run the assembly_stats on the contigs for this assembly.
+|image50|\  Now run the assembly_stats on the contigs for this assembly.
+
+.. code-block:: bash
 
    cd /opt/data
-
    assembly_stats coassembly/assembly1/final.contigs.fa
 
-|image51|\ How do these differ to the ones you generated previously? What may account for these differences?
+|image51|\  How do these differ to the ones you generated previously? What may account for these differences?
 
 |image52|\ We have also generated the first coassembly using MegaHIT.
 This was produced using the following command.  To specify the files, we
@@ -447,14 +472,15 @@ put all of the forward file as a comma separated list, and all of the
 reversed as a comma separated list, which should be ordered that same in
 both, such that the mate pairs match up.
 
-    cd /opt/data
+.. code-block:: bash
 
+    cd /opt/data
     megahit -1    clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq,clean_other/oral_human_example_1_splitab_kneaddata_paired_1.fastq  -2 clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq,clean_other/oral_human_example_1_splitab_kneaddata_paired_2.fastq -o coassembly/assembly2 -t 2 --k-list 23,51,77 
 
-|image53|\ Now perform another co-assembly, depending on the computer
+|image53|\  Now perform another co-assembly, depending on the computer
 you have, either change one of the previous fastq files for the 
 
- 
+.. code-block:: bash
 
     megahit -1 clean_other/oral_human_example_1_splitab_kneaddata_paired_1.fastq,clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq,clean/oral_human_example_1_splitaa_kneaddata_paired_1.fastq -2 clean_other/oral_human_example_1_splitab_kneaddata_paired_2.fastq,clean_other/oral_human_example_1_splitac_kneaddata_paired_2.fastq,clean/oral_human_example_1_splitaa_kneaddata_paired_2.fastq -o coassembly/assembly3 -t 2 --k-list 23,51,77   
 
@@ -464,25 +490,24 @@ laptop, make sure that it does not go into standby mode.
 |image55|\ You should now have three different assemblies, two provide
 and one generated by yourselves. Now let us compare the assemblies.
 
+.. code-block:: bash
+
     cd /opt/data
-
     assembly_stats coassembly/assembly1/final.contigs.fa
-
     assembly_stats coassembly/assembly2/final.contigs.fa
-
     assembly_stats coassembly/assembly3/final.contigs.fa
 
 |image56|\ We only have contigs.fa from MegaHIT, so the contigs and
 scaffold sections are the same.
 
-|image57|\ Has the assembly improved? If so how?
+|image57|\  Has the assembly improved? If so how?
 
 .. |image1| image:: media/info.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image2| image:: media/action.png
-   :width: 0.1in
-   :height: 0.1in
+   :width: 0.26667in
+   :height: 0.26667in
 .. |image3| image:: media/info.png
    :width: 0.26667in
    :height: 0.26667in
