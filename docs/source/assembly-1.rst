@@ -13,23 +13,23 @@ Assembling data
 For this tutorial you will need to make a working directory to store
 your data in. 
 
-``mkdir -p ~/BiATA/session1/data``
-
-``chmod -R 777 ~/BiATA``
-
-``export DATADIR=~/BiATA/session1/data ``
+   mkdir -p ~/BiATA/session1/data
+   
+   chmod -R 777 ~/BiATA  
+   
+   export DATADIR=~/BiATA/session1/data
 
 In this directory, downloaded the tarball from **[INSERT URL]**
 
-``cd  ~/BiATA/session1/data``
+   cd  ~/BiATA/session1/data
 
-``wget -q [INSERT URL]``
+   wget -q [INSERT URL]
 
-``tar xzvf session1.tgz``
+   tar xzvf session1.tgz
 
 Now makes sure that you have pulled the docker container
 
-``docker pull microbiomeinformatics/biata-qc-assembly``
+    docker pull microbiomeinformatics/biata-qc-assembly
 
 Finally, start the docker container in the following way:
 
@@ -46,9 +46,9 @@ host decontamination. 
 |image2|\ First go to your working area, the data that you downloaded
 has been mounted in /opt/data in the docker container.
 
-cd /opt/data
-
-ls
+   cd /opt/data
+   
+   ls
 
 |image3|\ Here you should see the same contents as you had from
 downloading and uncompressing the session data. As we write into this
@@ -60,18 +60,18 @@ terminal running the Docker container.
 
 |image4|\ Generate a directory of the fastqc results
 
-cd /opt/data
+    cd /opt/data
+    
+    mkdir fastqc_results
+    
+    fastqc oral_human_example_1_splitaa.fastq.gz  --outdir fastqc_results
 
-mkdir fastqc_results
-
-fastqc oral_human_example_1_splitaa.fastq.gz  --outdir fastqc_results
-
-fastqc oral_human_example_2_splitaa.fastq.gz  --outdir fastqc_results
+    fastqc oral_human_example_2_splitaa.fastq.gz  --outdir fastqc_results
 
 |image5|\ Now on your **local** computer, go to the browser, and
 File->Open File. Use the file navigator to select the following file
 
-~/BiATA/session1/data/fastqc_results/oral_human_example_1_splitaa_fastqc.html
+    ~/BiATA/session1/data/fastqc_results/oral_human_example_1_splitaa_fastqc.html
 
 |image6|\
 
@@ -122,11 +122,11 @@ to look at many files. The tool multiqc aggregates the FastQC results
 across many samples and creates a single report for easy comparison.
 Here we will demonstrate the use of this tool
 
-cd /opt/data
-
-mkdir multiqc_results
-
-multiqc fastqc_results -o multiqc_results
+    cd /opt/data
+    
+    mkdir multiqc_results
+    
+    multiqc fastqc_results -o multiqc_results
 
 In this case, we provide the folder containing the fastqc results to
 multiqc and the -o allows us to set the output directory for this
@@ -160,26 +160,25 @@ already downloaded for you in the decontamination folder. To make this
 tutorial quicker and smaller in terms of file sizes, we are going to use
 PhiX (a common spike in) and just chromosome 10 from human.  
 
-cd /opt/data/decontamination
+    cd /opt/data/decontamination
 
 For the next step we need one file, so we want to merge the two
 different fasta files. This is simply done using the command line tool
 cat.
 
-cat phix.fasta GRCh38_chr10.fasta > GRCh38_phix.fasta
+    cat phix.fasta GRCh38_chr10.fasta > GRCh38_phix.fasta
 
 Now we need to build a bowtie index for them:
 
-bowtie2-build GRCh38_phix.fasta  GRCh38_phix.index  
+    bowtie2-build GRCh38_phix.fasta  GRCh38_phix.index  
 
 |image20|\ It is possible to automatically download a pre-indexed human
 genome in Bowtie2 format using the following command (but do not do this
 now, as this will take a while to download):
 
-+----------------------------------------------------------------------+
-| kneaddata_database --download human_genome bowtie2                   |
-| /opt/data/decontamination                                            |
-+----------------------------------------------------------------------+
+    +----------------------------------------------------------------------+
+    | kneaddata_database --download human_genome bowtie2                   |
+    +----------------------------------------------------------------------+
 
 |image21|\ Now we are going to use the GRCh38_phix database and clean-up
 our raw sequences.  kneaddata is a helpful wrapper script for a number
@@ -188,24 +187,16 @@ sequences, and Trimmomatic to exclude low-quality sequences. We also
 have written wrapper scripts to run these tools (see below), but using
 kneaddata allows for more flexibility in options.
 
-cd /opt/data/
-
-mkdir clean
+    cd /opt/data/
+    
+    mkdir clean
 
 We now need to uncompress the fastq files. 
 
-gunzip -c oral_human_example_2_splitaa.fastq.gz >
-oral_human_example_2_splitaa.fastq
-
-gunzip -c oral_human_example_1_splitaa.fastq.gz >
-oral_human_example_1_splitaa.fastq
-
-kneaddata --remove-intermediate-output -t 2 --input
-oral_human_example_1_splitaa.fastq --input
-oral_human_example_2_splitaa.fastq --output /opt/data/clean
---reference-db /opt/data/decontamination/GRCh38_phix.index
- --trimmomatic-options  "SLIDINGWINDOW:4:20 MINLEN:50" --bowtie2-options
-"--very-sensitive --dovetail" --remove-intermediate-output
+    gunzip -c oral_human_example_2_splitaa.fastq.gz > oral_human_example_2_splitaa.fastq
+    gunzip -c oral_human_example_1_splitaa.fastq.gz > oral_human_example_1_splitaa.fastq
+    
+    kneaddata --remove-intermediate-output -t 2 --input oral_human_example_1_splitaa.fastq --input oral_human_example_2_splitaa.fastq --output /opt/data/clean --reference-db /opt/data/decontamination/GRCh38_phix.index --trimmomatic-options  "SLIDINGWINDOW:4:20 MINLEN:50" --bowtie2-options "--very-sensitive --dovetail" --remove-intermediate-output
 
 |image22|\ The options above are:
 
@@ -238,11 +229,11 @@ containing different 4 different files for each read.**
 report for each of the oral_human_example_1_splitaa_kneaddata_paired
 files.  Do this within the clean directory.
 
-cd /opt/data/clean
-
-mkdir fastqc_final
-
-<you construct the command>
+    cd /opt/data/clean
+    
+    mkdir fastqc_final
+    
+    <you construct the command>
 
 |image24|\ Also generate a multiqc report and look at the sequence
 quality historgrams. 
