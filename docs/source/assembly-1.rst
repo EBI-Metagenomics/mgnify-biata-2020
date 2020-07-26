@@ -39,7 +39,7 @@ DISPLAY=docker.for.mac.localhost:0 biata-qc-assembly
 
 *Part 1 - Quality control and filtering of the raw sequence files*
 
-|image1| Learning Objectives - in the following exercises you will learn
+|image1|\ Learning Objectives - in the following exercises you will learn
 how to check on the quality of short read sequences: identify the
 presence of adaptor sequences, remove both adaptors and low quality
 sequences. You will also learn how to construct a reference database for
@@ -75,7 +75,7 @@ File->Open File. Use the file navigator to select the following file
 
 ~/BiATA/session1/data/fastqc_results/oral_human_example_1_splitaa_fastqc.html
 
-|image6|
+|image6|\
 
 Spend some time looking at the 'Per base sequence quality’. 
 
@@ -98,18 +98,18 @@ platforms will degrade as the run progresses, so it is common to see
 base calls falling into the orange area towards the end of a read.
 
 |image8|\ What does this tell you about your sequence data? When do the
-errors start? 
+errors s/tart? 
 
 In the pre-processed files we see two warnings, as shown on the left
 side of the report. Navigate to the “Per bases sequence content"
 
-|image9| 
+|image9|\ 
 
-|image10| At around 15-19 nucleotides, there DNA composition becomes
+|image10|\ At around 15-19 nucleotides, there DNA composition becomes
 very even, however, a the 5’ end of the sequence there  are distinct
 differences. Why do you think that is?
 
-|image11| Open up the FastQC report corresponding to the reversed
+|image11|\ Open up the FastQC report corresponding to the reversed
 reads. 
 
 |image12|\ Are there any significant differences between to the forward
@@ -119,7 +119,7 @@ For more information on the FastQC report, please consult the
 ‘Documentation’ available from this
 site: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 
-|image13| We are currently only looking at two files but often we want
+|image13|\ We are currently only looking at two files but often we want
 to look at many files. The tool multiqc aggregates the FastQC results
 across many samples and creates a single report for easy comparison.
 Here we will demonstrate the use of this tool
@@ -139,14 +139,14 @@ MultiQC. To do so, go to your browser, and use File->Open File. Use the
 file navigator to select the following file
 ~/BiATA/session1/data//multiqc_results/multiqc_report.html
 
-|image15|
+|image15|\
 
 |image16|\ Scroll down through the report. The sequence quality
 histograms show the following results from each file as two separate
 lines. The 'Status Checks’ show a matrix of which samples passed check
 and which ones have problems. 
 
-|image17| What fraction of reads are duplicates? 
+|image17|\ What fraction of reads are duplicates? 
 
 |image18|\ So, far we have looked at the raw files and assessed their
 content, but we have not done anything about removing duplicates,
@@ -209,7 +209,7 @@ oral_human_example_2_splitaa.fastq --output /opt/data/clean
  --trimmomatic-options  "SLIDINGWINDOW:4:20 MINLEN:50" --bowtie2-options
 "--very-sensitive --dovetail" --remove-intermediate-output
 
-|image22| The options above are:
+|image22|\ The options above are:
 
 \* --input,  Input FASTQ file. This option is given twice as we have
 paired-end data.
@@ -236,7 +236,7 @@ FASTQs, will be removed.
 **Kneaddata generates multiple outputs in the “clean” directory,
 containing different 4 different files for each read.**
 
-|image23| Using what you have learned previously, generate a fastqc
+|image23|\ Using what you have learned previously, generate a fastqc
 report for each of the oral_human_example_1_splitaa_kneaddata_paired
 files.  Do this within the clean directory.
 
@@ -258,7 +258,7 @@ mkdir multiqc
 |image25|\ View the multiQC report as before using your browser. You
 should see something like this:
 
-|image26|
+|image26|\
 
 |image27|\ Open the previous MultiQC report and see if they have
 improved? 
@@ -278,7 +278,7 @@ less kneaddata_read_counts.txt
 
 |image30|\ What fraction of reads have been deemed to be contaminating?
 
-|image31| The reads have now be decontaminated any can be uploaded to
+|image31|\ The reads have now be decontaminated any can be uploaded to
 ENA, one of the INSDC members. It is beyond the scope of this course to
 include a tutorial on how to submit to ENA, but there is additional
 information available on how to do this in this Online Training guide
@@ -288,7 +288,7 @@ https://www.ebi.ac.uk/training/online/course/ebi-metagenomics-portal-submitting-
 
 *Part 2 - Assembly and Co-assembly*
 
-|image32| Learning Objectives - in the following exercises you will
+|image32|\ Learning Objectives - in the following exercises you will
 learn how to perform a metagenomic assembly and to start some basic
 analysis of the output. Subsequently, we will demonstrate the
 application of co-assembly. Note, due to the complexity of metagenomics
@@ -312,7 +312,7 @@ sequence data uses a lot of memory with SPAdes. In the following
 practicals we will demonstrate the use of metaSPAdes on a small sample
 and the use of MegaHIT for performing co-assembly.
 
-|image33| Using the sequences that you have previously QC-ed, run
+|image33|\ Using the sequences that you have previously QC-ed, run
 metaspades. To make things faster, we are going to turn-off metaspades
 own read error correction method, by specifying the command
 --only-assembler. 
@@ -324,9 +324,9 @@ mkdir assembly
 metaspades.py    -t    2    --only-assembler    -m    10    -1  
 /opt/data/clean/oral_human_example_1_splitaa_kneaddata_paired_1.fastq    -2    /opt/data/clean/oral_human_example_1_splitaa_kneaddata_paired_2.fastq    -o    /opt/data/assembly
 
-|image34| This takes about 1 hour to complete. 
+|image34|\ This takes about 1 hour to complete. 
 
-|image35| Once this completes, we can investigate the assembly. The
+|image35|\ Once this completes, we can investigate the assembly. The
 first step is to simply look at the contigs.fasta file.  
 
 Now take the first 40 lines of the sequence and perform a blast search
@@ -337,9 +337,9 @@ perform the following:
 
 head -41 contigs.fasta
 
-|image36|
+|image36|\
 
-|image37| Which species do you think this sequence may be coming from?
+|image37|\ Which species do you think this sequence may be coming from?
 Does this make sense as a human oral bacteria? Are you surprised by this
 result at all?  
 
@@ -349,17 +349,17 @@ cd /opt/data/assembly
 
 assembly_stats scaffolds.fasta
 
-|image39| This will output two simple tables in JSON format, but it is
+|image39|\ This will output two simple tables in JSON format, but it is
 fairly simple to read. There is a section that corresponds to the
 scaffolds in the assembly and a section that corresponds to the contigs.
 
-|image40| What is the length of longest and shortest contigs? 
+|image40|\ What is the length of longest and shortest contigs? 
 
-|image41| What is the N50 of the assembly? Given that are input
+|image41|\ What is the N50 of the assembly? Given that are input
 sequences were ~150bp long paired-end sequences, what does this tell you
 about the assembly?
 
-|image42| N50 is a measure to describe the quality of assembled genomes
+|image42|\ N50 is a measure to describe the quality of assembled genomes
 that are fragmented in contigs of different length.  We can apply this
 with some caution to metagenomes, where we can use it to crudely assess
 the contig length that covers 50% of the total assembly.  Essentially
@@ -368,7 +368,7 @@ alike metagenomes. Note, N10 is the minimum contig length to cover 10
 percent of the metagenome. N90 is the minimum contig length to cover 90
 percent of the metagenome.
 
-|image43| Bandage (a Bioinformatics Application for Navigating De novo
+|image43|\ Bandage (a Bioinformatics Application for Navigating De novo
 Assembly Graphs Easily), is a program that creates interactive
 visualisations of assembly graphs. They can be useful for finding
 sections of the graph, such as rRNA, or to try to find parts of a
@@ -397,10 +397,10 @@ Set Scope to 'Entire graph'
 
 The click on Draw graph
 
-|image45| Use the sliders in the main panel to move around and look at
+|image45|\ Use the sliders in the main panel to move around and look at
 each distinct part of the assembly graph.
 
-|image46| Can you find any large, complex parts of the graph? If so,
+|image46|\ Can you find any large, complex parts of the graph? If so,
 what do they look like. 
 
 |image47|\ In this particular sample, we believe that strains related to
@@ -436,11 +436,10 @@ The click on Draw graph
 
 You should then see something like this:
 
-|image48|
+|image48|\
 
- Lorna STOP
 
-|image49| In the following steps of this exercise, we will look at
+|image49|\ In the following steps of this exercise, we will look at
 performing co-assembly of multiple datasets. Due to computational
 limitations, we can only look a example datasets.  However, the
 principles are the same. We have also pre-calculated some assemblies for
@@ -461,7 +460,7 @@ assembly_stats coassembly/assembly1/final.contigs.fa
 |image51|\ How do these differ to the ones you generated previously?
 What may account for these differences?
 
-|image52| We have also generated the first coassembly using MegaHIT.
+|image52|\ We have also generated the first coassembly using MegaHIT.
 This was produced using the following command.  To specify the files, we
 put all of the forward file as a comma separated list, and all of the
 reversed as a comma separated list, which should be ordered that same in
@@ -488,10 +487,10 @@ clean_other/oral_human_example_1_splitab_kneaddata_paired_1.fastq,clean_other/or
 clean_other/oral_human_example_1_splitab_kneaddata_paired_2.fastq,clean_other/oral_human_example_1_splitac_kneaddata_paired_2.fastq,clean/oral_human_example_1_splitaa_kneaddata_paired_2.fastq
 -o coassembly/assembly3 -t 2 --k-list 23,51,77   
 
-|image54| This takes about 20-30 minutes. Also, if you are using a
+|image54|\ This takes about 20-30 minutes. Also, if you are using a
 laptop, make sure that it does not go into standby mode.
 
-|image55| You should now have three different assemblies, two provide
+|image55|\ You should now have three different assemblies, two provide
 and one generated by yourselves. Now let us compare the assemblies.
 
 cd /opt/data
@@ -502,7 +501,7 @@ assembly_stats coassembly/assembly2/final.contigs.fa
 
 assembly_stats coassembly/assembly3/final.contigs.fa
 
-|image56| We only have contigs.fa from MegaHIT, so the contigs and
+|image56|\ We only have contigs.fa from MegaHIT, so the contigs and
 scaffold sections are the same.
 
 |image57|\ Has the assembly improved? If so how?
