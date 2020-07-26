@@ -370,21 +370,20 @@ load up the assembly_graph_after_simplification.gfa.   
 
 |image44|\ At the terminal, type 
 
-Bandage
+    Bandage
 
 In the the Bandage GUI perform the following
 
-Select File->Load graph
+    Select File->Load graph
 
-Navigate to  /opt/data/assembly and select
-on assembly_graph_after_simplification.gfa
+    Navigate to  /opt/data/assembly and select on assembly_graph_after_simplification.gfa
 
 Once loaded, you need to draw the graph. To do so, under the “Graph
 drawing” panel on the left side perform the following:
 
-Set Scope to 'Entire graph'
-
-The click on Draw graph
+    Set Scope to 'Entire graph'
+     
+    The click on Draw graph
 
 |image45|\ Use the sliders in the main panel to move around and look at
 each distinct part of the assembly graph.
@@ -402,26 +401,25 @@ the assembly graph.
 
 To do so, go to the “BLAST” panel on the left side of the GUI.
 
-Step 1 - Select Create/view BLAST search, this will open a new window
-
-Step 2 - select build Blast database
-
-Step 3 - Load from FASTA file -> navigate to the genome folder
-/opt/data/genome and select GCA_000164695.fasta
-
-Step 4 - modify the  blast filters to 95% identity
-
-Step 6 - run blast
-
-Step 7 - close this window
+    Step 1 - Select Create/view BLAST search, this will open a new window    
+    
+    Step 2 - select build Blast database
+    
+    Step 3 - Load from FASTA file -> navigate to the genome folder /opt/data/genome and select GCA_000164695.fasta
+    
+    Step 4 - modify the  blast filters to 95% identity
+    
+    Step 6 - run blast
+    
+    Step 7 - close this window
 
 To visualise just these hits, go back to "Graph drawing” panel. 
 
-Set Scope to ‘Around BLAST hits’
-
-Set Distance 2
-
-The click on Draw graph
+    Set Scope to ‘Around BLAST hits’
+    
+    Set Distance 2
+    
+    The click on Draw graph
 
 You should then see something like this:
 
@@ -435,19 +433,15 @@ principles are the same. We have also pre-calculated some assemblies for
 you. In the co-assembly directory, there are already 2 assemblies.  We
 have a single paired-end assembly. 
 
-megahit -1
-clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq -2
-clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq -o
-coassembly/assembly1 -t 2 --k-list 23,51,77 
+    megahit -1 clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq -2 clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq -o  coassembly/assembly1 -t 2 --k-list 23,51,77 
 
 |image50|\ Now run the assembly_stats on the contigs for this assembly.
 
-cd /opt/data
+   cd /opt/data
 
-assembly_stats coassembly/assembly1/final.contigs.fa
+   assembly_stats coassembly/assembly1/final.contigs.fa
 
-|image51|\ How do these differ to the ones you generated previously?
-What may account for these differences?
+|image51|\ How do these differ to the ones you generated previously? What may account for these differences?
 
 |image52|\ We have also generated the first coassembly using MegaHIT.
 This was produced using the following command.  To specify the files, we
@@ -455,26 +449,16 @@ put all of the forward file as a comma separated list, and all of the
 reversed as a comma separated list, which should be ordered that same in
 both, such that the mate pairs match up.
 
- 
+    cd /opt/data
 
-cd /opt/data
-
-megahit -1
-clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq,clean_other/oral_human_example_1_splitab_kneaddata_paired_1.fastq
--2
-clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq,clean_other/oral_human_example_1_splitab_kneaddata_paired_2.fastq -o
-coassembly/assembly2 -t 2 --k-list 23,51,77 
+    megahit -1    clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq,clean_other/oral_human_example_1_splitab_kneaddata_paired_1.fastq  -2 clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq,clean_other/oral_human_example_1_splitab_kneaddata_paired_2.fastq -o coassembly/assembly2 -t 2 --k-list 23,51,77 
 
 |image53|\ Now perform another co-assembly, depending on the computer
 you have, either change one of the previous fastq files for the 
 
  
 
-megahit -1
-clean_other/oral_human_example_1_splitab_kneaddata_paired_1.fastq,clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq,clean/oral_human_example_1_splitaa_kneaddata_paired_1.fastq
--2
-clean_other/oral_human_example_1_splitab_kneaddata_paired_2.fastq,clean_other/oral_human_example_1_splitac_kneaddata_paired_2.fastq,clean/oral_human_example_1_splitaa_kneaddata_paired_2.fastq
--o coassembly/assembly3 -t 2 --k-list 23,51,77   
+    megahit -1 clean_other/oral_human_example_1_splitab_kneaddata_paired_1.fastq,clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq,clean/oral_human_example_1_splitaa_kneaddata_paired_1.fastq -2 clean_other/oral_human_example_1_splitab_kneaddata_paired_2.fastq,clean_other/oral_human_example_1_splitac_kneaddata_paired_2.fastq,clean/oral_human_example_1_splitaa_kneaddata_paired_2.fastq -o coassembly/assembly3 -t 2 --k-list 23,51,77   
 
 |image54|\ This takes about 20-30 minutes. Also, if you are using a
 laptop, make sure that it does not go into standby mode.
@@ -482,13 +466,13 @@ laptop, make sure that it does not go into standby mode.
 |image55|\ You should now have three different assemblies, two provide
 and one generated by yourselves. Now let us compare the assemblies.
 
-cd /opt/data
+    cd /opt/data
 
-assembly_stats coassembly/assembly1/final.contigs.fa
+    assembly_stats coassembly/assembly1/final.contigs.fa
 
-assembly_stats coassembly/assembly2/final.contigs.fa
+    assembly_stats coassembly/assembly2/final.contigs.fa
 
-assembly_stats coassembly/assembly3/final.contigs.fa
+    assembly_stats coassembly/assembly3/final.contigs.fa
 
 |image56|\ We only have contigs.fa from MegaHIT, so the contigs and
 scaffold sections are the same.
