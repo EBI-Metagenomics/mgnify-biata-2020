@@ -522,25 +522,25 @@ scaffold sections are the same.
 .. |image5| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image6| image:: media/question.png
+.. |image6| image:: media/fastqc1.png
    :width: 6.26389in
    :height: 4.30833in
 .. |image7| image:: media/info.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image8| image:: media/image4.png
+.. |image8| image:: media/question.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image9| image:: media/image5.png
+.. |image9| image:: media/fastqc2.png
    :width: 6.26389in
    :height: 4.30833in
-.. |image10| image:: media/image4.png
+.. |image10| image:: media/question.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image11| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image12| image:: media/image4.png
+.. |image12| image:: media/question.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image13| image:: media/action.png
@@ -549,13 +549,13 @@ scaffold sections are the same.
 .. |image14| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image15| image:: media/image6.png
+.. |image15| image:: media/multiqc1.png
    :width: 6.26389in
    :height: 4.30833in
 .. |image16| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image17| image:: media/image4.png
+.. |image17| image:: media/question.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image18| image:: media/info.png
@@ -582,19 +582,19 @@ scaffold sections are the same.
 .. |image25| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image26| image:: media/image7.png
+.. |image26| image:: media/multiqc2.png
    :width: 6.26389in
    :height: 4.30833in
-.. |image27| image:: media/image4.png
+.. |image27| image:: media/question.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image28| image:: media/image4.png
+.. |image28| image:: media/question.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image29| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image30| image:: media/image4.png
+.. |image30| image:: media/question.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image31| image:: media/info.png
@@ -612,10 +612,10 @@ scaffold sections are the same.
 .. |image35| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image36| image:: media/image8.png
+.. |image36| image:: media/blast.png
    :width: 6.26389in
    :height: 3.86181in
-.. |image37| image:: media/image4.png
+.. |image37| image:: media/question.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image38| image:: media/action.png
@@ -624,10 +624,10 @@ scaffold sections are the same.
 .. |image39| image:: media/info.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image40| image:: media/image4.png
+.. |image40| image:: media/question.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image41| image:: media/image4.png
+.. |image41| image:: media/question.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image42| image:: media/info.png
@@ -642,13 +642,13 @@ scaffold sections are the same.
 .. |image45| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image46| image:: media/image4.png
+.. |image46| image:: media/question.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image47| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image48| image:: media/image9.png
+.. |image48| image:: media/bandage.png
    :width: 6.26389in
    :height: 3.67569in
 .. |image49| image:: media/info.png
@@ -657,7 +657,7 @@ scaffold sections are the same.
 .. |image50| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image51| image:: media/image4.png
+.. |image51| image:: media/question.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image52| image:: media/info.png
@@ -675,6 +675,6 @@ scaffold sections are the same.
 .. |image56| image:: media/info.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image57| image:: media/image4.png
+.. |image57| image:: media/question.png
    :width: 0.26667in
    :height: 0.26667in
