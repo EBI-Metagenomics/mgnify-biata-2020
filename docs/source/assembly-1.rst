@@ -238,11 +238,11 @@ files.  Do this within the clean directory.
 |image24|\ Also generate a multiqc report and look at the sequence
 quality historgrams. 
 
-cd /opt/data/clean
-
-mkdir multiqc
-
-<you construct the command>
+    cd /opt/data/clean
+    
+    mkdir multiqc
+    
+    <you construct the command>
 
 |image25|\ View the multiQC report as before using your browser. You
 should see something like this:
@@ -258,12 +258,11 @@ be? Is there anything that suggests that adaptor sequences were found? 
 |image29|\ To generate a summary file of how the sequence were
 categorised by Kneaddata, run the following command.  
 
-cd /opt/data
+    cd /opt/data
 
-kneaddata_read_count_table --input /opt/data/clean --output
-kneaddata_read_counts.txt
+    kneaddata_read_count_table --input /opt/data/clean --output kneaddata_read_counts.txt
 
-less kneaddata_read_counts.txt
+    less kneaddata_read_counts.txt
 
 |image30|\ What fraction of reads have been deemed to be contaminating?
 
@@ -306,12 +305,11 @@ metaspades. To make things faster, we are going to turn-off metaspades
 own read error correction method, by specifying the command
 --only-assembler. 
 
-cd /opt/data
+    cd /opt/data
 
-mkdir assembly
+    mkdir assembly
 
-metaspades.py    -t    2    --only-assembler    -m    10    -1  
-/opt/data/clean/oral_human_example_1_splitaa_kneaddata_paired_1.fastq    -2    /opt/data/clean/oral_human_example_1_splitaa_kneaddata_paired_2.fastq    -o    /opt/data/assembly
+    metaspades.py    -t    2    --only-assembler    -m    10    -1 /opt/data/clean/oral_human_example_1_splitaa_kneaddata_paired_1.fastq    -2    /opt/data/clean/oral_human_example_1_splitaa_kneaddata_paired_2.fastq    -o    /opt/data/assembly
 
 |image34|\ This takes about 1 hour to complete. 
 
@@ -324,7 +322,7 @@ Nucleotide:Nucleotide from the set of options). Leave all other options
 as default on the search page. To select the first 40 lines of sequence
 perform the following:
 
-head -41 contigs.fasta
+    head -41 contigs.fasta
 
 |image36|\
 
@@ -334,9 +332,9 @@ result at all?  
 
 |image38|\ Now let us consider some statistics about the entire assembly
 
-cd /opt/data/assembly
-
-assembly_stats scaffolds.fasta
+    cd /opt/data/assembly
+    
+    assembly_stats scaffolds.fasta
 
 |image39|\ This will output two simple tables in JSON format, but it is
 fairly simple to read. There is a section that corresponds to the
