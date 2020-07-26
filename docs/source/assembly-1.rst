@@ -507,25 +507,25 @@ scaffold sections are the same.
 
 |image57|\ Has the assembly improved? If so how?
 
-.. |image1| image:: media/image1.png
+.. |image1| image:: media/info.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image2| image:: media/action.png
+   :width: 0.1in
+   :height: 0.1in
+.. |image3| image:: media/info.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image3| image:: media/image1.png
+.. |image4| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image4| image:: media/image2.png
+.. |image5| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image5| image:: media/image2.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image6| image:: media/questtion.png
+.. |image6| image:: media/question.png
    :width: 6.26389in
    :height: 4.30833in
-.. |image7| image:: media/image1.png
+.. |image7| image:: media/info.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image8| image:: media/image4.png
@@ -537,49 +537,49 @@ scaffold sections are the same.
 .. |image10| image:: media/image4.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image11| image:: media/image2.png
+.. |image11| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image12| image:: media/image4.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image13| image:: media/image2.png
+.. |image13| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image14| image:: media/image2.png
+.. |image14| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image15| image:: media/image6.png
    :width: 6.26389in
    :height: 4.30833in
-.. |image16| image:: media/image2.png
+.. |image16| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image17| image:: media/image4.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image18| image:: media/image1.png
+.. |image18| image:: media/info.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image19| image:: media/image2.png
+.. |image19| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image20| image:: media/image1.png
+.. |image20| image:: media/info.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image21| image:: media/image2.png
+.. |image21| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image22| image:: media/image1.png
+.. |image22| image:: media/info.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image23| image:: media/image2.png
+.. |image23| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image24| image:: media/image2.png
+.. |image24| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image25| image:: media/image2.png
+.. |image25| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image26| image:: media/image7.png
@@ -591,25 +591,25 @@ scaffold sections are the same.
 .. |image28| image:: media/image4.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image29| image:: media/image2.png
+.. |image29| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image30| image:: media/image4.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image31| image:: media/image1.png
+.. |image31| image:: media/info.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image32| image:: media/image1.png
+.. |image32| image:: media/info.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image33| image:: media/image2.png
+.. |image33| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image34| image:: media/image1.png
+.. |image34| image:: media/info.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image35| image:: media/image2.png
+.. |image35| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image36| image:: media/image8.png
@@ -618,10 +618,10 @@ scaffold sections are the same.
 .. |image37| image:: media/image4.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image38| image:: media/image2.png
+.. |image38| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image39| image:: media/image1.png
+.. |image39| image:: media/info.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image40| image:: media/image4.png
@@ -630,49 +630,49 @@ scaffold sections are the same.
 .. |image41| image:: media/image4.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image42| image:: media/image1.png
+.. |image42| image:: media/info.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image43| image:: media/image2.png
+.. |image43| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image44| image:: media/image2.png
+.. |image44| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image45| image:: media/image2.png
+.. |image45| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image46| image:: media/image4.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image47| image:: media/image2.png
+.. |image47| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image48| image:: media/image9.png
    :width: 6.26389in
    :height: 3.67569in
-.. |image49| image:: media/image1.png
+.. |image49| image:: media/info.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image50| image:: media/image2.png
+.. |image50| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image51| image:: media/image4.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image52| image:: media/image1.png
+.. |image52| image:: media/info.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image53| image:: media/image2.png
+.. |image53| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image54| image:: media/image1.png
+.. |image54| image:: media/info.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image55| image:: media/image2.png
+.. |image55| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image56| image:: media/image1.png
+.. |image56| image:: media/info.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image57| image:: media/image4.png
