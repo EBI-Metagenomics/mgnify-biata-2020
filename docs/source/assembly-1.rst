@@ -13,29 +13,27 @@ Assembling data
 For this tutorial you will need to make a working directory to store
 your data in. 
 
-mkdir -p ~/BiATA/session1/data
+``mkdir -p ~/BiATA/session1/data``
 
-chmod -R 777 ~/BiATA
+``chmod -R 777 ~/BiATA``
 
-export DATADIR=~/BiATA/session1/data 
+``export DATADIR=~/BiATA/session1/data ``
 
 In this directory, downloaded the tarball from **[INSERT URL]**
 
-cd  ~/BiATA/session1/data
+``cd  ~/BiATA/session1/data``
 
-wget -q [INSERT URL]
+``wget -q [INSERT URL]``
 
-tar xzvf session1.tgz
+``tar xzvf session1.tgz``
 
 Now makes sure that you have pulled the docker container
 
-docker pull microbiomeinformatics/biata-qc-assembly
+``docker pull microbiomeinformatics/biata-qc-assembly``
 
 Finally, start the docker container in the following way:
 
-docker run --rm -it  -e DISPLAY=$DISPLAY  -v $DATADIR:/opt/data -v
-/tmp/.X11-unix:/tmp/.X11-unix:rw  -e
-DISPLAY=docker.for.mac.localhost:0 biata-qc-assembly
+    docker run --rm -it  -e DISPLAY=$DISPLAY  -v $DATADIR:/opt/data -v /tmp/.X11-unix:/tmp/.X11-unix:rw  -e DISPLAY=docker.for.mac.localhost:0 biata-qc-assembly
 
 *Part 1 - Quality control and filtering of the raw sequence files*
 
