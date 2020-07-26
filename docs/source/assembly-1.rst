@@ -510,7 +510,7 @@ scaffold sections are the same.
 .. |image1| image:: media/image1.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image2| image:: media/image2.png
+.. |image2| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
 .. |image3| image:: media/image1.png
@@ -522,7 +522,7 @@ scaffold sections are the same.
 .. |image5| image:: media/image2.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image6| image:: media/image3.png
+.. |image6| image:: media/questtion.png
    :width: 6.26389in
    :height: 4.30833in
 .. |image7| image:: media/image1.png
