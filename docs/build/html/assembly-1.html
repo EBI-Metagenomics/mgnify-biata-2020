@@ -217,7 +217,8 @@ kneaddata --remove-intermediate-output -t <span class="m">2</span> --input oral_
 </pre></div>
 </div>
 <p><a class="reference internal" href="_images/info.png"><img alt="image22" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;The options above are:</p>
-<table border="1" class="docutils">
+<blockquote>
+<div><table border="1" class="docutils">
 <colgroup>
 <col width="100%" />
 </colgroup>
@@ -240,6 +241,7 @@ FASTQs, will be removed.</p>
 </tr>
 </tbody>
 </table>
+</div></blockquote>
 <p><strong>Kneaddata generates multiple outputs in the “clean” directory,
 containing different 4 different files for each read.</strong></p>
 <p><a class="reference internal" href="_images/action.png"><img alt="image23" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;Using what you have learned previously, generate a fastqc
@@ -278,7 +280,9 @@ include a tutorial on how to submit to ENA, but there is additional
 information available on how to do this in this Online Training guide
 provided by EMBL-EBI</p>
 <p><a class="reference external" href="https://www.ebi.ac.uk/training/online/course/ebi-metagenomics-portal-submitting-metagenomics-da/considerations-submitting-metagenomic-data">https://www.ebi.ac.uk/training/online/course/ebi-metagenomics-portal-submitting-metagenomics-da/considerations-submitting-metagenomic-data</a></p>
-<p><em>Part 2 - Assembly and Co-assembly</em></p>
+</div>
+<div class="section" id="part-2-assembly-and-co-assembly">
+<h2><em>Part 2 - Assembly and Co-assembly</em><a class="headerlink" href="#part-2-assembly-and-co-assembly" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="_images/info.png"><img alt="image32" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;Learning Objectives - in the following exercises you will
 learn how to perform a metagenomic assembly and to start some basic
 analysis of the output. Subsequently, we will demonstrate the
@@ -307,7 +311,13 @@ own&nbsp;read error correction method, by specifying the command
 –only-assembler.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /opt/data
 mkdir assembly
-metaspades.py    -t    2    --only-assembler    -m    10    -1 /opt/data/clean/oral_human_example_1_splitaa_kneaddata_paired_1.fastq    -2    /opt/data/clean/oral_human_example_1_splitaa_kneaddata_paired_2.fastq    -o    /opt/data/assembly
+metaspades.py <span class="se">\</span>
+        -t 2  <span class="se">\</span>
+        --only-assembler <span class="se">\</span>
+        -m 10 <span class="se">\</span>
+        -1 /opt/data/clean/oral_human_example_1_splitaa_kneaddata_paired_1.fastq <span class="se">\</span>
+        -2 /opt/data/clean/oral_human_example_1_splitaa_kneaddata_paired_2.fastq <span class="se">\</span>
+        -o /opt/data/assembly
 </pre></div>
 </div>
 <p><a class="reference internal" href="_images/info.png"><img alt="image34" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;This takes about 1 hour to complete.</p>
@@ -453,6 +463,7 @@ scaffold sections are the same.</p>
 <li><a class="reference internal" href="#">Assembling data</a><ul>
 <li><a class="reference internal" href="#prerequisites"><em>Prerequisites</em></a></li>
 <li><a class="reference internal" href="#part-1-quality-control-and-filtering-of-the-raw-sequence-files"><em>Part 1 - Quality control and filtering of the raw sequence files</em></a></li>
+<li><a class="reference internal" href="#part-2-assembly-and-co-assembly"><em>Part 2 - Assembly and Co-assembly</em></a></li>
 </ul>
 </li>
 </ul>

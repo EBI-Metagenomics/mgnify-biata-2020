@@ -216,30 +216,30 @@ We now need to uncompress the fastq files. 
 
 |image22|\ The options above are:
 
-+---------------------------------------------------------------------------------------------+
-|                                                                                             |
-| \* **--input**, Input FASTQ file. This option is given twice as we have paired-end data. */ |
-|                                                                                             |
-| \* **--output**, Output directory.                                                          |
-|                                                                                             |
-| \* **--reference-db**, Path to bowtie2 database for decontamination.                        |
-|                                                                                             |
-| \* **-t**, # Number of threads to use (2 in this case).                                     |
-|                                                                                             |
-| \* **--trimmomatic-options**, Options for Trimmomatic to use, in quotations                 |
-| ("SLIDINGWINDOW:4:20 MINLEN:50" in this case). See the Trimmomatic                          |
-| website for more options.                                                                   |
-|                                                                                             |
-| \* **--bowtie2-options**, Options for bowtie2 to use, in quotations. The                    |
-| options "--very-sensitive" and "--dovetail" set the alignment parameters                    |
-| to be very sensitive and sets cases where mates extend past each other                      |
-| to be concordant (i.e. they will be called as contaminants and be                           |
-| excluded).                                                                                  |
-|                                                                                             |
-| \* **--remove-intermediate-output**, Intermediate files, including large                    |
-| FASTQs, will be removed.                                                                    |
-|                                                                                             |
-+---------------------------------------------------------------------------------------------+
+    +---------------------------------------------------------------------------------------------+
+    |                                                                                             |
+    | \* **--input**, Input FASTQ file. This option is given twice as we have paired-end data. */ |
+    |                                                                                             |
+    | \* **--output**, Output directory.                                                          |
+    |                                                                                             |
+    | \* **--reference-db**, Path to bowtie2 database for decontamination.                        |
+    |                                                                                             |
+    | \* **-t**, # Number of threads to use (2 in this case).                                     |
+    |                                                                                             |
+    | \* **--trimmomatic-options**, Options for Trimmomatic to use, in quotations                 |
+    | ("SLIDINGWINDOW:4:20 MINLEN:50" in this case). See the Trimmomatic                          |
+    | website for more options.                                                                   |
+    |                                                                                             |
+    | \* **--bowtie2-options**, Options for bowtie2 to use, in quotations. The                    |
+    | options "--very-sensitive" and "--dovetail" set the alignment parameters                    |
+    | to be very sensitive and sets cases where mates extend past each other                      |
+    | to be concordant (i.e. they will be called as contaminants and be                           |
+    | excluded).                                                                                  |
+    |                                                                                             |
+    | \* **--remove-intermediate-output**, Intermediate files, including large                    |
+    | FASTQs, will be removed.                                                                    |
+    |                                                                                             |
+    +---------------------------------------------------------------------------------------------+
 
 **Kneaddata generates multiple outputs in the “clean” directory,
 containing different 4 different files for each read.**
@@ -294,6 +294,7 @@ provided by EMBL-EBI
 https://www.ebi.ac.uk/training/online/course/ebi-metagenomics-portal-submitting-metagenomics-da/considerations-submitting-metagenomic-data
 
 *Part 2 - Assembly and Co-assembly*
+-----------------------------------
 
 |image32|\ Learning Objectives - in the following exercises you will
 learn how to perform a metagenomic assembly and to start some basic
@@ -311,10 +312,10 @@ this, such as MetaVelvet, metaSPAdes, IDBA-UD, MegaHIT. We generally use
 metaSPAdes, as in most cases it yields the best contig size statistics
 (i.e. more continguous assembly) and has been shown to be able to
 capture high degrees of community diversity (Vollmers, et al. PLOS One
-2017).  However, you should consider the pros and cons of different
+2017). However, you should consider the pros and cons of different
 assemblers, which not only includes the accuracy of the assembly, but
 also their computational overhead. Compare these factors to what you
-have available.  For example, very diverse samples with a lot of
+have available. For example, very diverse samples with a lot of
 sequence data uses a lot of memory with SPAdes. In the following
 practicals we will demonstrate the use of metaSPAdes on a small sample
 and the use of MegaHIT for performing co-assembly.
@@ -328,7 +329,13 @@ own read error correction method, by specifying the command
 
     cd /opt/data
     mkdir assembly
-    metaspades.py    -t    2    --only-assembler    -m    10    -1 /opt/data/clean/oral_human_example_1_splitaa_kneaddata_paired_1.fastq    -2    /opt/data/clean/oral_human_example_1_splitaa_kneaddata_paired_2.fastq    -o    /opt/data/assembly
+    metaspades.py \
+            -t 2  \
+            --only-assembler \
+            -m 10 \
+            -1 /opt/data/clean/oral_human_example_1_splitaa_kneaddata_paired_1.fastq \
+            -2 /opt/data/clean/oral_human_example_1_splitaa_kneaddata_paired_2.fastq \
+            -o /opt/data/assembly
 
 |image34|\ This takes about 1 hour to complete. 
 
