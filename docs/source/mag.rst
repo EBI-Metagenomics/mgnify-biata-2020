@@ -180,7 +180,7 @@ the level of **completeness -**
 **5*contamination**. You should be aiming for an overall score of at
 least **70-80%**.
 
- |image5|
+ |image5|\
 
 Figure 2. Example output of CheckM
 
@@ -211,7 +211,7 @@ click to paste. You should then be able to run FigTree as follows:
 
     figtree
 
-|image3|  Open the **renamed.tree** file with **FigTree** and then
+|image3|\  Open the **renamed.tree** file with **FigTree** and then
 select from the toolbar **File > Export Trees**. In the **Tree file
 format** select **Newick** and export the file as **renamed.nwk**
 
@@ -233,8 +233,7 @@ yourself
 
 follow these steps:
 
-   **1)** After you have created and logged in to your account go to
-   **My Trees**
+   **1)** After you have created and logged in to your account go to **My Trees**
 
   **2)** From there select **Upload tree files** and upload the tree
    you exported from **FigTree**
