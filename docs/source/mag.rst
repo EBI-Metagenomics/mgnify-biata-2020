@@ -90,20 +90,20 @@ generate the coverage stats (*input.fastq.sam.bam).*
 
 Running MetaBAT
 
-|image4|\ Create a working directory on your desktop:
+|image3|\ Create a working directory on your desktop:
 
     tar zxvf seesion4.tgz
 
 This should contain the following two file contigs.fasta
 and input.fastq.sam.bam.
 
-|image4| Create a subdirectory where files will be output:
+|image3| Create a subdirectory where files will be output:
 
     cd /opt/data/assemblies/
 
     mkdir contigs.fasta.metabat-bins2000
 
-|image4|\Run the following command to produce a
+|image3|\Run the following command to produce a
 contigs.fasta.depth.txt file, summarising the output depth for use with
 MetaBAT:
 
@@ -115,20 +115,15 @@ MetaBAT:
 
     cd /opt/data/assemblies/
 
-*metabat2 —inFile  contigs.fasta   --outFile
-contigs.fasta.metabat-bins2000/bin -- abdFile contigs.fasta.depth.txt
---minContig 2000*
+    metabat2 —inFile  contigs.fasta   --outFile contigs.fasta.metabat-bins2000/bin -- abdFile contigs.fasta.depth.txt --minContig 2000
 
-|A picture containing drawing, light Description automatically
-generated| Once the binning process is complete, each bin will be
+|image3| Once the binning process is complete, each bin will be
 grouped into a multi-fasta file with a name structure of
 **bin.[0-9].fa**.
 
-|A picture containing drawing, light Description automatically
-generated| Move to the output directory and look at the output of the
-binning process.
+|image3| Move to the output directory and look at the output of the binning process.
 
-cd /opt/data/assemblies/*contigs.fasta.metabat-bins2000/bin*
+    cd /opt/data/assemblies/*contigs.fasta.metabat-bins2000/bin
 
 |image4|\ ** **\ How many bins did the process produce?
 
@@ -139,7 +134,7 @@ might represent a very small fraction of a potential species present in
 your dataset. To further assess the quality of the bins we will use
 **CheckM** (https://github.com/Ecogenomics/CheckM/wiki).
 
-Running CheckM
+**Running CheckM**
 
 |image1|\ **CheckM** has its own reference database of single-copy
 marker genes. Essentially, based on the proportion of these markers
@@ -147,8 +142,7 @@ detected in the bin, the number of copies of each and how different they
 are, it will determine the level of **completeness**, **contamination**
 and **strain heterogeneity** of the predicted genome. 
 
-|A picture containing drawing, light Description automatically
-generated|\ Before we start, we need to configure checkM.
+|image3|\ Before we start, we need to configure checkM.
 
     mkdir checkm_data
 
@@ -165,12 +159,11 @@ wrapped into the **lineage_wf** workflow.
 
 Move back to the top level directory 
 
-*cd /opt/data/assemblies/*
+    cd /opt/data/assemblies/
 
 Now run CheckM with the following command:
 
-*checkm lineage_wf -x fa contigs.fasta.metabat-bins2000 checkm_output
---tab_table -f MAGs_checkm.tab --reduced_tree -t 4*
+    checkm lineage_wf -x fa contigs.fasta.metabat-bins2000 checkm_output --tab_table -f MAGs_checkm.tab --reduced_tree -t 4
 
 Due to memory constraints (< 40 GB), we have added the option
 **--reduced_tree** to build the phylogeny with a reduced number of
@@ -187,7 +180,7 @@ the level of **completeness -**
 **5*contamination**. You should be aiming for an overall score of at
 least **70-80%**.
 
- |A screenshot of a cell phone Description automatically generated|
+ |image5|
 
 Figure 2. Example output of CheckM
 
@@ -199,8 +192,7 @@ can then do this easily with the **newick utilities**
 
 To do this, run the following command:
 
-*nw_rename checkm_output/storage/tree/concatenated.tre rename_list.tab >
-renamed.tree*
+    nw_rename checkm_output/storage/tree/concatenated.tre rename_list.tab > renamed.tree
 
 Visualising the phylogenetic tree
 
@@ -217,15 +209,13 @@ To do this, find the FigTree folder on Penelope (under Metagenomics- Day
 3 etc), right click, and choose copy, then open your home dir and right
 click to paste. You should then be able to run FigTree as follows:
 
-*cd ~/FigTree_v1.4.3 bash bin/figtree*
+    figtree
 
-|A picture containing drawing, light Description automatically
-generated|  Open the **renamed.tree** file with **FigTree** and then
+|image3|  Open the **renamed.tree** file with **FigTree** and then
 select from the toolbar **File > Export Trees**. In the **Tree file
 format** select **Newick** and export the file as **renamed.nwk**
 
-|A picture containing drawing, light Description automatically
-generated|\ To use **iTOL** you will need a user account. For the
+|image3|\ To use **iTOL** you will need a user account. For the
 purpose of this tutorial we have already created one for you with an
 example tree. The login is as follows:
 
@@ -243,24 +233,16 @@ yourself
 
 follow these steps:
 
-1. **1)** After you have created and logged in to your account go to
+   **1)** After you have created and logged in to your account go to
    **My Trees**
 
-2. **2)** From there select **Upload tree files** and upload the tree
-   you exported
+  **2)** From there select **Upload tree files** and upload the tree
+   you exported from **FigTree**
 
-..
+   **3)** Once uploaded, click the tree name to visualize the plot
 
-   from **FigTree**
-
-3. **3)** Once uploaded, click the tree name to visualize the plot
-
-4. **4)** To colour the clades and the outside circle according to the
-   phylum of
-
-..
-
-   each strain, drag and drop the files **iTOL_clades.txt** and
+   **4)** To colour the clades and the outside circle according to the
+   phylum of each strain, drag and drop the files **iTOL_clades.txt** and
    **iTOL_ocircles.txt** into the browser window
 
 Once that is done, all the reference genomes used by **CheckM** will be
@@ -275,7 +257,7 @@ about the unknowns? What is their most likely taxon?**
 .. |image1| image:: media/info.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image2| image:: media/binnin.png
+.. |image2| image:: media/binning.png
    :width: 6.26389in
    :height: 3.91389in
 .. |image3| image:: media/action.png
@@ -284,6 +266,6 @@ about the unknowns? What is their most likely taxon?**
 .. |image4| image:: media/question.png
    :width: 0.26667in
    :height: 0.26667in
-.. |A screenshot of a cell phone Description automatically generated| image:: media/image5.png
+.. |image5| image:: media/image5.png
    :width: 6.26389in
    :height: 1.37569in
