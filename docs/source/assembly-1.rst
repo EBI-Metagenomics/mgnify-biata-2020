@@ -8,7 +8,7 @@ Assembling data
 - Raw read deposition vs assembly
 - Co-assembly
 
-*Prerequisites*
+Prerequisites
 ---------------
 
 For this tutorial you will need to make a working directory to store
@@ -40,8 +40,8 @@ Finally, start the docker container in the following way:
 
    docker run --rm -it  -e DISPLAY=$DISPLAY  -v $DATADIR:/opt/data -v /tmp/.X11-unix:/tmp/.X11-unix:rw  -e DISPLAY=docker.for.mac.localhost:0 biata-qc-assembly
 
-*Part 1 - Quality control and filtering of the raw sequence files*
-------------------------------------------------------------------
+Part 1 - Quality control and filtering of the raw sequence files
+-----------------------------------------------------------------
 
 |image1|\ Learning Objectives - in the following exercises you will learn
 how to check on the quality of short read sequences: identify the
@@ -218,7 +218,7 @@ We now need to uncompress the fastq files. 
 
     +---------------------------------------------------------------------------------------------+
     |                                                                                             |
-    | \* **--input**, Input FASTQ file. This option is given twice as we have paired-end data. */ |
+    | \* **--input**, Input FASTQ file. This option is given twice as we have paired-end data.    |
     |                                                                                             |
     | \* **--output**, Output directory.                                                          |
     |                                                                                             |
@@ -293,8 +293,8 @@ provided by EMBL-EBI
 
 https://www.ebi.ac.uk/training/online/course/ebi-metagenomics-portal-submitting-metagenomics-da/considerations-submitting-metagenomic-data
 
-*Part 2 - Assembly and Co-assembly*
------------------------------------
+Part 2 - Assembly and Co-assembly
+----------------------------------
 
 |image32|\ Learning Objectives - in the following exercises you will
 learn how to perform a metagenomic assembly and to start some basic
