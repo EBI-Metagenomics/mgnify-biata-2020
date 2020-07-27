@@ -118,7 +118,11 @@ Once the command execution finishes two new files will be stored for each catego
 
     for file in $(find obs_results/ -name '*annot.tsv' -type f); do contig_taxonomic_assign.py -i ${file} -o ${file%/*}; done
 
-Final output results are stored in the **obs_results/** directory. The gene maps are stored per contig in individual **PDF files** (suffix names of the contigs indicate their level of confidence and category class obtained from VirSorter). Taxonomic annotation results per classification category are labelled as ***_tax_assign.tsv**. 
+Final output results are stored in the **obs_results/** directory. 
+
+The gene maps are stored per contig in individual **PDF files** (suffix names of the contigs indicate their level of confidence and category class obtained from VirSorter). Each protein coding sequence in the contig maps (PDFs) is coloured and labeled as **high confidence** (E-value < 0.1) or **low confidence** (E-value > 0.1) based on the matches to the HMM profiles. Do not confuse this with the high confidence or low confidence prediction of VIRify for the **whole contig**.
+
+Taxonomic annotation results per classification category are stored as text in the ***_tax_assign.tsv** files. 
 
 Let’s inspect the results. Do:
 
