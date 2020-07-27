@@ -21,7 +21,7 @@ In the presentation we will cover:
 - Pathways/systems
 - Using the contig viewer
 
-Part2 - MGnify hands-on exercises
+MGnify hands-on exercises
 ##################################
 
 For this session we will look at some of the data and analyses that are available from MGnify. We will navigate the resource, try out different ways to search for interesting samples/studies, and then investigate the analysis results that are available for assemblies.
