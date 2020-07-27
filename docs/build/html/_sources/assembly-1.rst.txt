@@ -8,7 +8,7 @@ Assembling data
 - Raw read deposition vs assembly
 - Co-assembly
 
-*Prerequisites*
+Prerequisites
 ---------------
 
 For this tutorial you will need to make a working directory to store
@@ -40,8 +40,8 @@ Finally, start the docker container in the following way:
 
    docker run --rm -it  -e DISPLAY=$DISPLAY  -v $DATADIR:/opt/data -v /tmp/.X11-unix:/tmp/.X11-unix:rw  -e DISPLAY=docker.for.mac.localhost:0 biata-qc-assembly
 
-*Part 1 - Quality control and filtering of the raw sequence files*
-------------------------------------------------------------------
+Part 1 - Quality control and filtering of the raw sequence files
+-----------------------------------------------------------------
 
 |image1|\ Learning Objectives - in the following exercises you will learn
 how to check on the quality of short read sequences: identify the
@@ -218,7 +218,7 @@ We now need to uncompress the fastq files. 
 
     +---------------------------------------------------------------------------------------------+
     |                                                                                             |
-    | \* **--input**, Input FASTQ file. This option is given twice as we have paired-end data. */ |
+    | \* **--input**, Input FASTQ file. This option is given twice as we have paired-end data.    |
     |                                                                                             |
     | \* **--output**, Output directory.                                                          |
     |                                                                                             |
@@ -293,8 +293,8 @@ provided by EMBL-EBI
 
 https://www.ebi.ac.uk/training/online/course/ebi-metagenomics-portal-submitting-metagenomics-da/considerations-submitting-metagenomic-data
 
-*Part 2 - Assembly and Co-assembly*
------------------------------------
+Part 2 - Assembly and Co-assembly
+----------------------------------
 
 |image32|\ Learning Objectives - in the following exercises you will
 learn how to perform a metagenomic assembly and to start some basic
@@ -312,10 +312,10 @@ this, such as MetaVelvet, metaSPAdes, IDBA-UD, MegaHIT. We generally use
 metaSPAdes, as in most cases it yields the best contig size statistics
 (i.e. more continguous assembly) and has been shown to be able to
 capture high degrees of community diversity (Vollmers, et al. PLOS One
-2017).  However, you should consider the pros and cons of different
+2017). However, you should consider the pros and cons of different
 assemblers, which not only includes the accuracy of the assembly, but
 also their computational overhead. Compare these factors to what you
-have available.  For example, very diverse samples with a lot of
+have available. For example, very diverse samples with a lot of
 sequence data uses a lot of memory with SPAdes. In the following
 practicals we will demonstrate the use of metaSPAdes on a small sample
 and the use of MegaHIT for performing co-assembly.

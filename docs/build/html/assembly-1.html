@@ -52,7 +52,7 @@
 <li>Co-assembly</li>
 </ul>
 <div class="section" id="prerequisites">
-<h2><em>Prerequisites</em><a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <p>For this tutorial you will need to make a working directory to store
 your data in.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p ~/BiATA/session1/data
@@ -76,7 +76,7 @@ tar xzvf session1.tgz
 </div>
 </div>
 <div class="section" id="part-1-quality-control-and-filtering-of-the-raw-sequence-files">
-<h2><em>Part 1 - Quality control and filtering of the raw sequence files</em><a class="headerlink" href="#part-1-quality-control-and-filtering-of-the-raw-sequence-files" title="Permalink to this headline">¶</a></h2>
+<h2>Part 1 - Quality control and filtering of the raw sequence files<a class="headerlink" href="#part-1-quality-control-and-filtering-of-the-raw-sequence-files" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="_images/info.png"><img alt="image1" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;Learning Objectives - in the following exercises you will learn
 how to check on the quality of short read sequences: identify the
 presence of adaptor sequences, remove both adaptors and low quality
@@ -223,7 +223,7 @@ kneaddata --remove-intermediate-output -t <span class="m">2</span> --input oral_
 <col width="100%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><p class="first">* <strong>–input</strong>,&nbsp;Input FASTQ file. This option is given twice as we have paired-end data. <a href="#id1"><span class="problematic" id="id2">*</span></a>/</p>
+<tr class="row-odd"><td><p class="first">* <strong>–input</strong>,&nbsp;Input FASTQ file. This option is given twice as we have paired-end data.</p>
 <p>* <strong>–output</strong>, Output directory.</p>
 <p>* <strong>–reference-db</strong>, Path to bowtie2 database for decontamination.</p>
 <p>* <strong>-t</strong>, # Number of threads to use (2 in this case).</p>
@@ -282,7 +282,7 @@ provided by EMBL-EBI</p>
 <p><a class="reference external" href="https://www.ebi.ac.uk/training/online/course/ebi-metagenomics-portal-submitting-metagenomics-da/considerations-submitting-metagenomic-data">https://www.ebi.ac.uk/training/online/course/ebi-metagenomics-portal-submitting-metagenomics-da/considerations-submitting-metagenomic-data</a></p>
 </div>
 <div class="section" id="part-2-assembly-and-co-assembly">
-<h2><em>Part 2 - Assembly and Co-assembly</em><a class="headerlink" href="#part-2-assembly-and-co-assembly" title="Permalink to this headline">¶</a></h2>
+<h2>Part 2 - Assembly and Co-assembly<a class="headerlink" href="#part-2-assembly-and-co-assembly" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="_images/info.png"><img alt="image32" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;Learning Objectives - in the following exercises you will
 learn how to perform a metagenomic assembly and to start some basic
 analysis of the output. Subsequently, we will demonstrate the
@@ -298,10 +298,10 @@ this, such as MetaVelvet, metaSPAdes, IDBA-UD, MegaHIT. We generally use
 metaSPAdes, as in most cases it yields the best contig size statistics
 (i.e. more continguous assembly) and has been shown to be able to
 capture high degrees of community diversity (Vollmers, et al. PLOS One
-2017). &nbsp;However, you should consider the pros and cons of different
+2017).&nbsp;However, you should consider the pros and cons of different
 assemblers, which not only includes the accuracy of the assembly, but
 also their computational overhead. Compare these factors to what you
-have available. &nbsp;For example, very diverse samples with a lot of
+have available. For example, very diverse samples with a lot of
 sequence data uses a lot of memory with SPAdes. In the following
 practicals we will demonstrate the use of metaSPAdes on a small sample
 and the use of MegaHIT for performing co-assembly.</p>
@@ -461,9 +461,9 @@ scaffold sections are the same.</p>
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Assembling data</a><ul>
-<li><a class="reference internal" href="#prerequisites"><em>Prerequisites</em></a></li>
-<li><a class="reference internal" href="#part-1-quality-control-and-filtering-of-the-raw-sequence-files"><em>Part 1 - Quality control and filtering of the raw sequence files</em></a></li>
-<li><a class="reference internal" href="#part-2-assembly-and-co-assembly"><em>Part 2 - Assembly and Co-assembly</em></a></li>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#part-1-quality-control-and-filtering-of-the-raw-sequence-files">Part 1 - Quality control and filtering of the raw sequence files</a></li>
+<li><a class="reference internal" href="#part-2-assembly-and-co-assembly">Part 2 - Assembly and Co-assembly</a></li>
 </ul>
 </li>
 </ul>

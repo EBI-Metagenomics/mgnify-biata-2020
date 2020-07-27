@@ -6,41 +6,47 @@ MAG generation
 - Assessment of quality (MIGMAGs)
 - Taxonomic assignment
 
-*Prerequisites*
+Prerequisites
+---------------
 
 For this tutorial you will need to make a working directory to store
 your data in. 
 
+.. code-block:: bash
+
     mkdir -p ~/BiATA/session4/data
-
     chmod -R 777 ~/BiATA
-
     export DATADIR=~/BiATA/session4/data 
 
 In this directory, downloaded the tarball from **[INSERT URL]**
 
+.. code-block:: bash
+
     cd  ~/BiATA/session4/data
-
     wget -q [INSERT URL]
-
     tar xzvf session4.tgz
 
 Now makes sure that you have pulled the docker container
+
+.. code-block:: bash
 
     docker pull microbiomeinformatics/biata-binning
 
 Finally, start the docker container in the following way:
 
+.. code-block:: bash
+
     docker run --rm -it  -e DISPLAY=$DISPLAY  -v $DATADIR:/opt/data -v /tmp/.X11-unix:/tmp/.X11-unix:rw  -e DISPLAY=docker.for.mac.localhost:0 biata-binning
 
-*Generating metagenome assembled genomes*
+Generating metagenome assembled genomes
+----------------------------------------
 
 |image1|\ Learning Objectives - in the following exercises you will
 learn how to bin an assembly, assess the quality of this assembly with
 checkM and then visualise in placement of these genomes within a
 reference tree. 
 
-|image1|\ As with the assembly process, there are many software tools available for
+|image1|\  As with the assembly process, there are many software tools available for
 binning metagenome assemblies. Examples include, but are not limited to:
 
 MaxBin: https://sourceforge.net/projects/maxbin/ 
@@ -62,59 +68,59 @@ is summarised in Figure 1.
 Figure 1. MetaBAT workflow (Kang, et al. *PeerJ* 2015).
 
 |A picture containing drawing Description automatically
-generated|\ Prior to running MetaBAT, we need to generate coverage
+generated|\  Prior to running MetaBAT, we need to generate coverage
 statistics by mapping reads to the contigs. To do this, we can use bwa
 (http://bio-bwa.sourceforge.net/) and then the samtools s/w
 (`http://www.htslib.org <http://www.htslib.org/>`__) to reformat the
 output. Again, this can take some time, so we have run it in advance. To
 repeat the process, you would run the following commands:
 
-# index the contigs file that was produced by metaSPAdes:
+.. code-block:: bash
 
-*bwa index contigs.fasta*
+    # index the contigs file that was produced by metaSPAdes:
+    bwa index contigs.fasta
 
-# map the original reads to the contigs:
+    # map the original reads to the contigs:
+    bwa mem contigs.fasta ERR011322_1.fastq ERR011322_2.fastq > input.fastq.sam
 
-*bwa mem contigs.fasta ERR011322_1.fastq ERR011322_2.fastq >
-input.fastq.sam*
-
-# reformat the file with samtools:
-
-*samtools view -Sbu input.fastq.sam > junk *
-
-*samtools sort junk input.fastq.sam*
+    # reformat the file with samtools:
+    samtools view -Sbu input.fastq.sam > junk 
+    samtools sort junk input.fastq.sam
 
 We should now have the files we need for the rest of the process – the
-assemblies themselves (*contigs.fasta)* and a file from which we can
+assemblies themselves (*contigs.fasta*) and a file from which we can
 generate the coverage stats (*input.fastq.sam.bam).*
 
-Running MetaBAT
+**Running MetaBAT**
 
-|image3|\ Create a working directory on your desktop:
+|image3|\  Create a working directory on your desktop:
+
+.. code-block:: bash
 
     tar zxvf seesion4.tgz
 
-This should contain the following two file contigs.fasta
-and input.fastq.sam.bam.
+This should contain the following two file *contigs.fasta*
+and *input.fastq.sam.bam*.
 
 |image3| Create a subdirectory where files will be output:
 
-    cd /opt/data/assemblies/
+.. code-block:: bash
 
+    cd /opt/data/assemblies/
     mkdir contigs.fasta.metabat-bins2000
 
-|image3|\Run the following command to produce a
-contigs.fasta.depth.txt file, summarising the output depth for use with
+|image3|\  Run the following command to produce a
+*contigs.fasta.depth.txt* file, summarising the output depth for use with
 MetaBAT:
 
-    cd /opt/data/assemblies/
+.. code-block:: bash
 
+    cd /opt/data/assemblies/
     jgi_summarize_bam_contig_depths --outputDepth contigs.fasta.depth.txt input.fastq.sam.bam
 
-# now run MetaBAT
+    # now run MetaBAT
 
     cd /opt/data/assemblies/
-
     metabat2 —inFile  contigs.fasta   --outFile contigs.fasta.metabat-bins2000/bin -- abdFile contigs.fasta.depth.txt --minContig 2000
 
 |image3| Once the binning process is complete, each bin will be
@@ -123,11 +129,13 @@ grouped into a multi-fasta file with a name structure of
 
 |image3| Move to the output directory and look at the output of the binning process.
 
+.. code-block:: bash
+
     cd /opt/data/assemblies/*contigs.fasta.metabat-bins2000/bin
 
-|image4|\ ** **\ How many bins did the process produce?
+|image4|\  ** How many bins did the process produce?
 
-|image4|\ ** **\ How many sequences are in each bin?
+|image4|\  ** How many sequences are in each bin?
 
 Obviously, not all bins will have the same level of accuracy since some
 might represent a very small fraction of a potential species present in
@@ -136,20 +144,19 @@ your dataset. To further assess the quality of the bins we will use
 
 **Running CheckM**
 
-|image1|\ **CheckM** has its own reference database of single-copy
+|image1|\  **CheckM** has its own reference database of single-copy
 marker genes. Essentially, based on the proportion of these markers
 detected in the bin, the number of copies of each and how different they
 are, it will determine the level of **completeness**, **contamination**
 and **strain heterogeneity** of the predicted genome. 
 
-|image3|\ Before we start, we need to configure checkM.
+|image3|\  Before we start, we need to configure checkM.
+
+.. code-block:: bash
 
     mkdir checkm_data
-        
     mv checkm_data_2015_01_16.tar.gz checkm_data
-    
     tar zxvf checkm_data_2015_01_16.tar.gz
-
     checkm data setRoot /opt/data/checkm_data
 
 This program has some handy tools not only for quality control, but also
@@ -159,9 +166,13 @@ wrapped into the **lineage_wf** workflow.
 
 Move back to the top level directory 
 
+.. code-block:: bash
+
     cd /opt/data/assemblies/
 
 Now run CheckM with the following command:
+
+.. code-block:: bash
 
     checkm lineage_wf -x fa contigs.fasta.metabat-bins2000 checkm_output --tab_table -f MAGs_checkm.tab --reduced_tree -t 4
 
@@ -192,9 +203,11 @@ can then do this easily with the **newick utilities**
 
 To do this, run the following command:
 
+.. code-block:: bash
+
     nw_rename checkm_output/storage/tree/concatenated.tre rename_list.tab > renamed.tree
 
-Visualising the phylogenetic tree
+**Visualising the phylogenetic tree**
 
 We will now plot and visualize the tree we have produced. A quick and
 user- friendly way to do this is to use the web-based **interactive Tree
@@ -209,19 +222,21 @@ To do this, find the FigTree folder on Penelope (under Metagenomics- Day
 3 etc), right click, and choose copy, then open your home dir and right
 click to paste. You should then be able to run FigTree as follows:
 
+.. code-block:: bash
+
     figtree
 
 |image3|\  Open the **renamed.tree** file with **FigTree** and then
-select from the toolbar **File > Export Trees**. In the **Tree file
+select from the toolbar **File -> Export Trees**. In the **Tree file
 format** select **Newick** and export the file as **renamed.nwk**
 
-|image3|\ To use **iTOL** you will need a user account. For the
+|image3|\  To use **iTOL** you will need a user account. For the
 purpose of this tutorial we have already created one for you with an
 example tree. The login is as follows:
 
-**User:**\ *EBI_training*
+**User:**\  *EBI_training*
 
-**Password:**\ *EBI_training*
+**Password:**\  *EBI_training*
 
 After you login, just click on **My Trees** in the toolbar at the top
 and select
@@ -235,7 +250,7 @@ follow these steps:
 
    **1)** After you have created and logged in to your account go to **My Trees**
 
-  **2)** From there select **Upload tree files** and upload the tree
+   **2)** From there select **Upload tree files** and upload the tree
    you exported from **FigTree**
 
    **3)** Once uploaded, click the tree name to visualize the plot
@@ -250,7 +265,7 @@ blank correspond to the **target genomes** we placed in the tree.
 Highlighting each tip of the phylogeny will let you see the whole
 taxon/sample name. Feel free to play around with the plot.
 
-|image4|\ ** Does the CheckM taxonomic classification make sense? What
+|image4|\  ** Does the CheckM taxonomic classification make sense? What
 about the unknowns? What is their most likely taxon?**
 
 .. |image1| image:: media/info.png
