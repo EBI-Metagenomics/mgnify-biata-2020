@@ -52,7 +52,9 @@ Now change into the **virify_tutorial** directory and setup the environment by r
  - **Category 3**: "possible" predictions
  - **Categories 4-6**: predicted prophages
 
-|image3|\  1.5. While VirSorter is running, we have prepared an R script so you can inspect the VirFinder results in the meantime using ggplot2. Open RStudio and load the **Analyse_VirFinder.R** script located in the **/virify_tutorial/data/scripts/** directory. Run the script (press Source on the top right corner) to generate the plot. 
+|image3|\  1.5. While VirSorter is running, we have prepared an R script so you can inspect the VirFinder results in the meantime using ggplot2. Open RStudio and load the **Analyse_VirFinder.R** script located in the **/virify_tutorial/data/scripts/** directory. Run the script (press Source on the top right corner) to generate the plot.
+
+|image2|\
 
 |image4|\  E1: What is the relationship between the **p-value** and the **score**? How do the results correlate with the **contig length**?
 
@@ -130,12 +132,18 @@ Note: if there any issues in running this tutorial, there is a separate director
 
 |image4|\  E3: Which viruses were detected as **high confidence** or **low confidence**? Open the gene map PDF files of the corresponding contigs to understand the different assignment results. Why were some contigs **not assigned** to a taxonomic lineage?
 
+|image5|\
+
 .. |image1| image:: media/info.png
    :width: 0.26667in
    :height: 0.26667in
+.. |image2| image:: media/virfinder.png
 .. |image3| image:: media/action.png
    :width: 0.25in
    :height: 0.25in
 .. |image4| image:: media/question.png
    :width: 0.26667in
    :height: 0.26667in
+.. |image5| image:: media/contig_map.png
+   :width: 9in
+   :height: 3in
