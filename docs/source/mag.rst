@@ -18,12 +18,12 @@ your data in. 
     chmod -R 777 ~/BiATA
     export DATADIR=~/BiATA/session4/data 
 
-In this directory, downloaded the tarball from **[INSERT URL]**
+In this directory, downloaded the tarball from http://ftp.ebi.ac.uk/pub/databases/metagenomics/mgnify_courses/biata_2020/
 
 .. code-block:: bash
 
     cd  ~/BiATA/session4/data
-    wget -q [INSERT URL]
+    wget -q http://ftp.ebi.ac.uk/pub/databases/metagenomics/mgnify_courses/biata_2020/session4.tgz
     tar xzvf session4.tgz
 
 Now makes sure that you have pulled the docker container
@@ -67,8 +67,7 @@ is summarised in Figure 1.
 
 Figure 1. MetaBAT workflow (Kang, et al. *PeerJ* 2015).
 
-|A picture containing drawing Description automatically
-generated|\  Prior to running MetaBAT, we need to generate coverage
+|image1|\  Prior to running MetaBAT, we need to generate coverage
 statistics by mapping reads to the contigs. To do this, we can use bwa
 (http://bio-bwa.sourceforge.net/) and then the samtools s/w
 (`http://www.htslib.org <http://www.htslib.org/>`__) to reformat the
@@ -123,19 +122,19 @@ MetaBAT:
     cd /opt/data/assemblies/
     metabat2 —inFile  contigs.fasta   --outFile contigs.fasta.metabat-bins2000/bin -- abdFile contigs.fasta.depth.txt --minContig 2000
 
-|image3| Once the binning process is complete, each bin will be
+|image3|\ Once the binning process is complete, each bin will be
 grouped into a multi-fasta file with a name structure of
 **bin.[0-9].fa**.
 
-|image3| Move to the output directory and look at the output of the binning process.
+|image3|\ Move to the output directory and look at the output of the binning process.
 
 .. code-block:: bash
 
     cd /opt/data/assemblies/*contigs.fasta.metabat-bins2000/bin
 
-|image4|\  ** How many bins did the process produce?
+|image4|\  How many bins did the process produce?
 
-|image4|\  ** How many sequences are in each bin?
+|image4|\  How many sequences are in each bin?
 
 Obviously, not all bins will have the same level of accuracy since some
 might represent a very small fraction of a potential species present in
