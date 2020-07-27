@@ -264,8 +264,7 @@ blank correspond to the **target genomes** we placed in the tree.
 Highlighting each tip of the phylogeny will let you see the whole
 taxon/sample name. Feel free to play around with the plot.
 
-|image4|\  Does the CheckM taxonomic classification make sense? What
-about the unknowns? What is their most likely taxon?
+|image4|\  Does the CheckM taxonomic classification make sense? What about the unknowns? What is their most likely taxon?
 
 .. |image1| image:: media/info.png
    :width: 0.26667in
