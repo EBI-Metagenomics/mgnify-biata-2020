@@ -38,7 +38,7 @@ Finally, start the docker container in the following way:
 
 .. code-block:: bash
 
-   docker run --rm -it  -e DISPLAY=$DISPLAY  -v $DATADIR:/opt/data -v /tmp/.X11-unix:/tmp/.X11-unix:rw  -e DISPLAY=docker.for.mac.localhost:0 biata-qc-assembly
+   docker run --rm -it  -e DISPLAY=$DISPLAY  -v $DATADIR:/opt/data -v /tmp/.X11-unix:/tmp/.X11-unix:rw  -e DISPLAY=docker.for.mac.localhost:0 microbiomeinformatics/biata-qc-assembly
 
 Part 1 - Quality control and filtering of the raw sequence files
 -----------------------------------------------------------------
