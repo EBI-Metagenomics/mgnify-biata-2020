@@ -265,6 +265,6 @@ about the unknowns? What is their most likely taxon?**
 .. |image4| image:: media/question.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image5| image:: media/image5.png
+.. |image5| image:: media/checkm.png
    :width: 6.26389in
    :height: 1.37569in
