@@ -138,6 +138,8 @@ Note: if there any issues in running this tutorial, there is a separate director
    :width: 0.26667in
    :height: 0.26667in
 .. |image2| image:: media/virfinder.png
+   :width: 4in
+   :height: 3.0769in
 .. |image3| image:: media/action.png
    :width: 0.25in
    :height: 0.25in
