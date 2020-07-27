@@ -57,7 +57,7 @@ has been mounted in ``/opt/data`` in the docker container.
    cd /opt/data
    ls
 
-|image3|\  Here you should see the same contents as you had from
+|image1|\  Here you should see the same contents as you had from
 downloading and uncompressing the session data. As we write into this
 directory, we should be able to see this from inside the container, and
 on the filesystem of the computer running this container. We will use
@@ -65,7 +65,7 @@ this to our advantage as we go through this practical. Unless stated
 otherwise all of the following commands should be executed in the
 terminal running the Docker container.
 
-|image4|\  Generate a directory of the fastqc results
+|image2|\  Generate a directory of the fastqc results
 
 .. code-block:: bash
 
@@ -74,16 +74,16 @@ terminal running the Docker container.
     fastqc oral_human_example_1_splitaa.fastq.gz  --outdir fastqc_results
     fastqc oral_human_example_2_splitaa.fastq.gz  --outdir fastqc_results
 
-|image5|\  Now on your **local** computer, go to the browser, and
+|image2|\  Now on your **local** computer, go to the browser, and
 ``File -> Open File``. Use the file navigator to select the following file
 
     ~/BiATA/session1/data/fastqc_results/oral_human_example_1_splitaa_fastqc.html
 
-|image6|\
+|image4|\
 
 Spend some time looking at the 'Per base sequence quality’. 
 
-|image7|\  For each position a BoxWhisker type plot is drawn. The
+|image1|\  For each position a BoxWhisker type plot is drawn. The
 elements of the plot are as follows:
 
 -  The central red line is the median value
@@ -101,29 +101,29 @@ into very good quality calls (green), calls of reasonable quality
 platforms will degrade as the run progresses, so it is common to see
 base calls falling into the orange area towards the end of a read.
 
-|image8|\  What does this tell you about your sequence data? When do the
+|image3|\  What does this tell you about your sequence data? When do the
 errors start? 
 
 In the pre-processed files we see two warnings, as shown on the left
 side of the report. Navigate to the “Per bases sequence content"
 
-|image9|\ 
+|image5|\ 
 
-|image10|\ At around 15-19 nucleotides, there DNA composition becomes
+|image3|\ At around 15-19 nucleotides, there DNA composition becomes
 very even, however, a the 5’ end of the sequence there  are distinct
 differences. Why do you think that is?
 
-|image11|\ Open up the FastQC report corresponding to the reversed
+|image2|\ Open up the FastQC report corresponding to the reversed
 reads. 
 
-|image12|\  Are there any significant differences between to the forward
+|image3|\  Are there any significant differences between to the forward
 and reverse files?
 
 For more information on the FastQC report, please consult the
 ‘Documentation’ available from this
 site: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 
-|image13|\ We are currently only looking at two files but often we want
+|image2|\ We are currently only looking at two files but often we want
 to look at many files. The tool multiqc aggregates the FastQC results
 across many samples and creates a single report for easy comparison.
 Here we will demonstrate the use of this tool
@@ -138,22 +138,22 @@ In this case, we provide the folder containing the fastqc results to
 multiqc and the -o allows us to set the output directory for this
 summarised report.
 
-|image14|\  Now on your **local** computer, open the summary report from
+|image2|\  Now on your **local** computer, open the summary report from
 MultiQC. To do so, go to your browser, and use ``File -> Open File``. Use the
 file navigator to select the following file
 
   ~/BiATA/session1/data//multiqc_results/multiqc_report.html
 
-|image15|\
+|image6|\
 
-|image16|\  Scroll down through the report. The sequence quality
+|image2|\  Scroll down through the report. The sequence quality
 histograms show the following results from each file as two separate
 lines. The 'Status Checks’ show a matrix of which samples passed check
 and which ones have problems. 
 
-|image17|\ What fraction of reads are duplicates? 
+|image3|\ What fraction of reads are duplicates? 
 
-|image18|\  So, far we have looked at the raw files and assessed their
+|image1|\  So, far we have looked at the raw files and assessed their
 content, but we have not done anything about removing duplicates,
 sequences with low quality scores or removal of the adaptors. So, lets
 start this process. The first step in the process is to make a database
@@ -162,7 +162,7 @@ screen for human DNA (which may come from the host and/or staff
 performing the experiment). However, if the sample is say from mouse,
 you would want to download the the mouse genome. 
 
-|image19|\  In the following exercise, we are going to use two “genomes”
+|image2|\  In the following exercise, we are going to use two “genomes”
 already downloaded for you in the decontamination folder. To make this
 tutorial quicker and smaller in terms of file sizes, we are going to use
 PhiX (a common spike in) and just chromosome 10 from human.  
@@ -185,7 +185,7 @@ Now we need to build a bowtie index for them:
 
     bowtie2-build GRCh38_phix.fasta  GRCh38_phix.index  
 
-|image20|\  It is possible to automatically download a pre-indexed human
+|image1|\  It is possible to automatically download a pre-indexed human
 genome in Bowtie2 format using the following command (but do not do this
 now, as this will take a while to download):
 
@@ -193,7 +193,7 @@ now, as this will take a while to download):
     | kneaddata_database --download human_genome bowtie2                   |
     +----------------------------------------------------------------------+
 
-|image21|\  Now we are going to use the `GRCh38_phix` database and clean-up
+|image2|\  Now we are going to use the `GRCh38_phix` database and clean-up
 our raw sequences. kneaddata is a helpful wrapper script for a number
 of pre-processing tools, including Bowtie2 to screen out contaminant
 sequences, and Trimmomatic to exclude low-quality sequences. We also
@@ -214,7 +214,7 @@ We now need to uncompress the fastq files. 
     
     kneaddata --remove-intermediate-output -t 2 --input oral_human_example_1_splitaa.fastq --input oral_human_example_2_splitaa.fastq --output /opt/data/clean --reference-db /opt/data/decontamination/GRCh38_phix.index --trimmomatic-options  "SLIDINGWINDOW:4:20 MINLEN:50" --bowtie2-options "--very-sensitive --dovetail" --remove-intermediate-output
 
-|image22|\ The options above are:
+|image1|\ The options above are:
 
     +---------------------------------------------------------------------------------------------+
     |                                                                                             |
@@ -244,7 +244,7 @@ We now need to uncompress the fastq files. 
 **Kneaddata generates multiple outputs in the “clean” directory,
 containing different 4 different files for each read.**
 
-|image23|\ Using what you have learned previously, generate a fastqc
+|image2|\ Using what you have learned previously, generate a fastqc
 report for each of the `oral_human_example_1_splitaa_kneaddata_paired`
 files.  Do this within the clean directory.
 
@@ -254,7 +254,7 @@ files.  Do this within the clean directory.
     mkdir fastqc_final
     <you construct the command>
 
-|image24|\  Also generate a multiqc report and look at the sequence
+|image2|\  Also generate a multiqc report and look at the sequence
 quality historgrams. 
 
 .. code-block:: bash
@@ -263,18 +263,18 @@ quality historgrams. 
     mkdir multiqc
     <you construct the command>
 
-|image25|\  View the multiQC report as before using your browser. You
+|image2|\  View the multiQC report as before using your browser. You
 should see something like this:
 
-|image26|\
+|image7|\
 
-|image27|\  Open the previous MultiQC report and see if they have
+|image3|\  Open the previous MultiQC report and see if they have
 improved? 
 
-|image28|\  Did sequences at the 5’ end become uniform? Why might that
+|image3|\  Did sequences at the 5’ end become uniform? Why might that
 be? Is there anything that suggests that adaptor sequences were found? 
 
-|image29|\  To generate a summary file of how the sequence were
+|image29\  To generate a summary file of how the sequence were
 categorised by Kneaddata, run the following command.  
 
 .. code-block:: bash
@@ -283,9 +283,9 @@ categorised by Kneaddata, run the following command.  
     kneaddata_read_count_table --input /opt/data/clean --output kneaddata_read_counts.txt
     less kneaddata_read_counts.txt
 
-|image30|\  What fraction of reads have been deemed to be contaminating?
+|image3|\  What fraction of reads have been deemed to be contaminating?
 
-|image31|\ The reads have now be decontaminated any can be uploaded to
+|image1|\ The reads have now be decontaminated any can be uploaded to
 ENA, one of the INSDC members. It is beyond the scope of this course to
 include a tutorial on how to submit to ENA, but there is additional
 information available on how to do this in this Online Training guide
@@ -296,7 +296,7 @@ https://www.ebi.ac.uk/training/online/course/ebi-metagenomics-portal-submitting-
 Part 2 - Assembly and Co-assembly
 ----------------------------------
 
-|image32|\ Learning Objectives - in the following exercises you will
+|image1|\ Learning Objectives - in the following exercises you will
 learn how to perform a metagenomic assembly and to start some basic
 analysis of the output. Subsequently, we will demonstrate the
 application of co-assembly. Note, due to the complexity of metagenomics
@@ -320,7 +320,7 @@ sequence data uses a lot of memory with SPAdes. In the following
 practicals we will demonstrate the use of metaSPAdes on a small sample
 and the use of MegaHIT for performing co-assembly.
 
-|image33|\ Using the sequences that you have previously QC-ed, run
+|image2|\ Using the sequences that you have previously QC-ed, run
 metaspades. To make things faster, we are going to turn-off metaspades
 own read error correction method, by specifying the command
 --only-assembler. 
@@ -337,9 +337,9 @@ own read error correction method, by specifying the command
             -2 /opt/data/clean/oral_human_example_1_splitaa_kneaddata_paired_2.fastq \
             -o /opt/data/assembly
 
-|image34|\ This takes about 1 hour to complete. 
+|image1|\ This takes about 1 hour to complete. 
 
-|image35|\ Once this completes, we can investigate the assembly. The
+|image2|\ Once this completes, we can investigate the assembly. The
 first step is to simply look at the contigs.fasta file.  
 
 Now take the first 40 lines of the sequence and perform a blast search
@@ -352,30 +352,30 @@ perform the following:
 
     head -41 contigs.fasta
 
-|image36|\
+|image8|\
 
-|image37|\ Which species do you think this sequence may be coming from?
+|image3|\ Which species do you think this sequence may be coming from?
 Does this make sense as a human oral bacteria? Are you surprised by this
 result at all?  
 
-|image38|\  Now let us consider some statistics about the entire assembly
+|image2|\  Now let us consider some statistics about the entire assembly
 
 .. code-block:: bash
 
     cd /opt/data/assembly
     assembly_stats scaffolds.fasta
 
-|image39|\ This will output two simple tables in JSON format, but it is
+|image1|\ This will output two simple tables in JSON format, but it is
 fairly simple to read. There is a section that corresponds to the
 scaffolds in the assembly and a section that corresponds to the contigs.
 
-|image40|\ What is the length of longest and shortest contigs? 
+|image3|\ What is the length of longest and shortest contigs? 
 
-|image41|\ What is the N50 of the assembly? Given that are input
+|image3|\ What is the N50 of the assembly? Given that are input
 sequences were ~150bp long paired-end sequences, what does this tell you
 about the assembly?
 
-|image42|\ N50 is a measure to describe the quality of assembled genomes
+|image1|\ N50 is a measure to describe the quality of assembled genomes
 that are fragmented in contigs of different length.  We can apply this
 with some caution to metagenomes, where we can use it to crudely assess
 the contig length that covers 50% of the total assembly.  Essentially
@@ -384,7 +384,7 @@ alike metagenomes. Note, N10 is the minimum contig length to cover 10
 percent of the metagenome. N90 is the minimum contig length to cover 90
 percent of the metagenome.
 
-|image43|\ Bandage (a Bioinformatics Application for Navigating De novo
+|image2|\ Bandage (a Bioinformatics Application for Navigating De novo
 Assembly Graphs Easily), is a program that creates interactive
 visualisations of assembly graphs. They can be useful for finding
 sections of the graph, such as rRNA, or to try to find parts of a
@@ -395,7 +395,7 @@ graph.  Normally, I would recommend looking at the ‘
 assembly_graph.fastg, but our assembly is quite fragmented, so we will
 load up the assembly_graph_after_simplification.gfa.   
 
-|image44|\  At the terminal, type 
+|image2|\  At the terminal, type 
 
     Bandage
 
@@ -412,13 +412,13 @@ drawing” panel on the left side perform the following:
      
     The click on Draw graph
 
-|image45|\ Use the sliders in the main panel to move around and look at
+|image2|\ Use the sliders in the main panel to move around and look at
 each distinct part of the assembly graph.
 
-|image46|\ Can you find any large, complex parts of the graph? If so,
+|image3|\ Can you find any large, complex parts of the graph? If so,
 what do they look like. 
 
-|image47|\  In this particular sample, we believe that strains related to
+|image2|\  In this particular sample, we believe that strains related to
 the species *Rothia dentocariosa,* a Gram-positive, round- to rod-shaped
 bacteria that is part of the normal community of microbes residing in
 the mouth and respiratory tract, should be present in our sample. While
@@ -450,10 +450,10 @@ To visualise just these hits, go back to "Graph drawing” panel. 
 
 You should then see something like this:
 
-|image48|\
+|image9|\
 
 
-|image49|\ In the following steps of this exercise, we will look at
+|image1|\ In the following steps of this exercise, we will look at
 performing co-assembly of multiple datasets. Due to computational
 limitations, we can only look a example datasets.  However, the
 principles are the same. We have also pre-calculated some assemblies for
@@ -464,16 +464,16 @@ have a single paired-end assembly. 
 
     megahit -1 clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq -2 clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq -o  coassembly/assembly1 -t 2 --k-list 23,51,77 
 
-|image50|\  Now run the assembly_stats on the contigs for this assembly.
+|image2|\  Now run the assembly_stats on the contigs for this assembly.
 
 .. code-block:: bash
 
    cd /opt/data
    assembly_stats coassembly/assembly1/final.contigs.fa
 
-|image51|\  How do these differ to the ones you generated previously? What may account for these differences?
+|image3|\  How do these differ to the ones you generated previously? What may account for these differences?
 
-|image52|\ We have also generated the first coassembly using MegaHIT.
+|image1|\ We have also generated the first coassembly using MegaHIT.
 This was produced using the following command.  To specify the files, we
 put all of the forward file as a comma separated list, and all of the
 reversed as a comma separated list, which should be ordered that same in
@@ -484,17 +484,17 @@ both, such that the mate pairs match up.
     cd /opt/data
     megahit -1    clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq,clean_other/oral_human_example_1_splitab_kneaddata_paired_1.fastq  -2 clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq,clean_other/oral_human_example_1_splitab_kneaddata_paired_2.fastq -o coassembly/assembly2 -t 2 --k-list 23,51,77 
 
-|image53|\  Now perform another co-assembly, depending on the computer
+|image2|\  Now perform another co-assembly, depending on the computer
 you have, either change one of the previous fastq files for the 
 
 .. code-block:: bash
 
     megahit -1 clean_other/oral_human_example_1_splitab_kneaddata_paired_1.fastq,clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq,clean/oral_human_example_1_splitaa_kneaddata_paired_1.fastq -2 clean_other/oral_human_example_1_splitab_kneaddata_paired_2.fastq,clean_other/oral_human_example_1_splitac_kneaddata_paired_2.fastq,clean/oral_human_example_1_splitaa_kneaddata_paired_2.fastq -o coassembly/assembly3 -t 2 --k-list 23,51,77   
 
-|image54|\ This takes about 20-30 minutes. Also, if you are using a
+|image1|\ This takes about 20-30 minutes. Also, if you are using a
 laptop, make sure that it does not go into standby mode.
 
-|image55|\ You should now have three different assemblies, two provide
+|image2|\ You should now have three different assemblies, two provide
 and one generated by yourselves. Now let us compare the assemblies.
 
 .. code-block:: bash
@@ -504,10 +504,10 @@ and one generated by yourselves. Now let us compare the assemblies.
     assembly_stats coassembly/assembly2/final.contigs.fa
     assembly_stats coassembly/assembly3/final.contigs.fa
 
-|image56|\ We only have contigs.fa from MegaHIT, so the contigs and
+|image1|\ We only have contigs.fa from MegaHIT, so the contigs and
 scaffold sections are the same.
 
-|image57|\  Has the assembly improved? If so how?
+|image3|\  Has the assembly improved? If so how?
 
 .. |image1| image:: media/info.png
    :width: 0.26667in
@@ -515,168 +515,25 @@ scaffold sections are the same.
 .. |image2| image:: media/action.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image3| image:: media/info.png
+.. |image3| image:: media/question.png
    :width: 0.26667in
    :height: 0.26667in
-.. |image4| image:: media/action.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image5| image:: media/action.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image6| image:: media/fastqc1.png
+.. |image4| image:: media/fastqc1.png
    :width: 6.26389in
    :height: 4.30833in
-.. |image7| image:: media/info.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image8| image:: media/question.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image9| image:: media/fastqc2.png
+.. |image5| image:: media/fastqc2.png
    :width: 6.26389in
    :height: 4.30833in
-.. |image10| image:: media/question.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image11| image:: media/action.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image12| image:: media/question.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image13| image:: media/action.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image14| image:: media/action.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image15| image:: media/multiqc1.png
+.. |image6| image:: media/multiqc1.png
    :width: 6.26389in
    :height: 4.30833in
-.. |image16| image:: media/action.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image17| image:: media/question.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image18| image:: media/info.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image19| image:: media/action.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image20| image:: media/info.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image21| image:: media/action.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image22| image:: media/info.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image23| image:: media/action.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image24| image:: media/action.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image25| image:: media/action.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image26| image:: media/multiqc2.png
+.. |image7| image:: media/multiqc2.png
    :width: 6.26389in
    :height: 4.30833in
-.. |image27| image:: media/question.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image28| image:: media/question.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image29| image:: media/action.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image30| image:: media/question.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image31| image:: media/info.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image32| image:: media/info.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image33| image:: media/action.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image34| image:: media/info.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image35| image:: media/action.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image36| image:: media/blast.png
+.. |image8| image:: media/blast.png
    :width: 6.26389in
    :height: 3.86181in
-.. |image37| image:: media/question.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image38| image:: media/action.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image39| image:: media/info.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image40| image:: media/question.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image41| image:: media/question.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image42| image:: media/info.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image43| image:: media/action.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image44| image:: media/action.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image45| image:: media/action.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image46| image:: media/question.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image47| image:: media/action.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image48| image:: media/bandage.png
+.. |image9| image:: media/bandage.png
    :width: 6.26389in
    :height: 3.67569in
-.. |image49| image:: media/info.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image50| image:: media/action.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image51| image:: media/question.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image52| image:: media/info.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image53| image:: media/action.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image54| image:: media/info.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image55| image:: media/action.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image56| image:: media/info.png
-   :width: 0.26667in
-   :height: 0.26667in
-.. |image57| image:: media/question.png
-   :width: 0.26667in
-   :height: 0.26667in
+

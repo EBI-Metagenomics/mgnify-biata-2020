@@ -60,9 +60,9 @@ chmod -R <span class="m">777</span> ~/BiATA
 <span class="nb">export</span> <span class="nv">DATADIR</span><span class="o">=</span>~/BiATA/session1/data
 </pre></div>
 </div>
-<p>In this directory, downloaded the tarball from <strong>[INSERT URL]</strong></p>
+<p>In this directory, downloaded the tarball from <a class="reference external" href="http://ftp.ebi.ac.uk/pub/databases/metagenomics/mgnify_courses/biata_2020/">http://ftp.ebi.ac.uk/pub/databases/metagenomics/mgnify_courses/biata_2020/</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cd  ~/BiATA/session1/data
-wget -q <span class="o">[</span>INSERT URL<span class="o">]</span>
+wget -q http://ftp.ebi.ac.uk/pub/databases/metagenomics/mgnify_courses/biata_2020/session1.tgz
 tar xzvf session1.tgz
 </pre></div>
 </div>
@@ -88,27 +88,27 @@ has been mounted in <code class="docutils literal notranslate"><span class="pre"
 ls
 </pre></div>
 </div>
-<p><a class="reference internal" href="_images/info.png"><img alt="image3" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a> Here you should see the same contents as you had from
+<p><a class="reference internal" href="_images/info.png"><img alt="image1" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a> Here you should see the same contents as you had from
 downloading and uncompressing the session data. As we write into this
 directory, we should be able to see this from inside the container, and
 on the filesystem of the computer running this container.&nbsp;We will use
 this to our advantage as we go through this practical. Unless stated
 otherwise all of the following commands should be executed in the
 terminal running the Docker container.</p>
-<p><a class="reference internal" href="_images/action.png"><img alt="image4" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> Generate a directory of the fastqc results</p>
+<p><a class="reference internal" href="_images/action.png"><img alt="image2" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> Generate a directory of the fastqc results</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /opt/data
 mkdir fastqc_results
 fastqc oral_human_example_1_splitaa.fastq.gz  --outdir fastqc_results
 fastqc oral_human_example_2_splitaa.fastq.gz  --outdir fastqc_results
 </pre></div>
 </div>
-<p><a class="reference internal" href="_images/action.png"><img alt="image5" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> Now on your <strong>local</strong> computer, go to the browser, and
+<p><a class="reference internal" href="_images/action.png"><img alt="image2" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> Now on your <strong>local</strong> computer, go to the browser, and
 <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">Open</span> <span class="pre">File</span></code>. Use the file navigator to select the following file</p>
 <blockquote>
 <div>~/BiATA/session1/data/fastqc_results/oral_human_example_1_splitaa_fastqc.html</div></blockquote>
-<p><a class="reference internal" href="_images/fastqc1.png"><img alt="image6" src="_images/fastqc1.png" style="width: 6.26389in; height: 4.30833in;" /></a></p>
+<p><a class="reference internal" href="_images/fastqc1.png"><img alt="image4" src="_images/fastqc1.png" style="width: 6.26389in; height: 4.30833in;" /></a></p>
 <p>Spend some time looking at the ‘Per base sequence quality’.</p>
-<p><a class="reference internal" href="_images/info.png"><img alt="image7" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a> For each position a BoxWhisker type plot is drawn. The
+<p><a class="reference internal" href="_images/info.png"><img alt="image1" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a> For each position a BoxWhisker type plot is drawn. The
 elements of the plot are as follows:</p>
 <ul class="simple">
 <li>The central red line is the median value</li>
@@ -122,22 +122,22 @@ into very good quality calls (green), calls of reasonable quality
 (orange), and calls of poor quality (red). The quality of calls on most
 platforms will degrade as the run progresses, so it is common to see
 base calls falling into the orange area towards the end of a read.</p>
-<p><a class="reference internal" href="_images/question.png"><img alt="image8" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a> What does this tell you about your sequence data? When do the
+<p><a class="reference internal" href="_images/question.png"><img alt="image3" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a> What does this tell you about your sequence data? When do the
 errors start?</p>
 <p>In the pre-processed files we see two warnings, as shown on the left
 side of the report. Navigate to the “Per bases sequence content”</p>
-<p><a class="reference internal" href="_images/fastqc2.png"><img alt="image9" src="_images/fastqc2.png" style="width: 6.26389in; height: 4.30833in;" /></a></p>
-<p><a class="reference internal" href="_images/question.png"><img alt="image10" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;At around 15-19 nucleotides, there DNA composition becomes
+<p><a class="reference internal" href="_images/fastqc2.png"><img alt="image5" src="_images/fastqc2.png" style="width: 6.26389in; height: 4.30833in;" /></a></p>
+<p><a class="reference internal" href="_images/question.png"><img alt="image3" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;At around 15-19 nucleotides, there DNA composition becomes
 very even, however, a the 5’ end of the sequence there &nbsp;are distinct
 differences. Why do you think that is?</p>
-<p><a class="reference internal" href="_images/action.png"><img alt="image11" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;Open up the FastQC report corresponding to the reversed
+<p><a class="reference internal" href="_images/action.png"><img alt="image2" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;Open up the FastQC report corresponding to the reversed
 reads.</p>
-<p><a class="reference internal" href="_images/question.png"><img alt="image12" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a> Are there any significant differences between to the forward
+<p><a class="reference internal" href="_images/question.png"><img alt="image3" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a> Are there any significant differences between to the forward
 and reverse files?</p>
 <p>For more information on the FastQC report, please consult the
 ‘Documentation’ available from this
 site:&nbsp;<a class="reference external" href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">https://www.bioinformatics.babraham.ac.uk/projects/fastqc/</a></p>
-<p><a class="reference internal" href="_images/action.png"><img alt="image13" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;We are currently only looking at two files but often we want
+<p><a class="reference internal" href="_images/action.png"><img alt="image2" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;We are currently only looking at two files but often we want
 to look at many files. The tool multiqc&nbsp;aggregates the FastQC results
 across many samples and creates a single report for easy comparison.
 Here we will demonstrate the use of this tool</p>
@@ -149,18 +149,18 @@ multiqc fastqc_results -o multiqc_results
 <p>In this case, we provide the folder containing the fastqc results to
 multiqc and the -o allows us to set the output directory for this
 summarised report.</p>
-<p><a class="reference internal" href="_images/action.png"><img alt="image14" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> Now on your <strong>local</strong> computer, open the summary report from
+<p><a class="reference internal" href="_images/action.png"><img alt="image2" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> Now on your <strong>local</strong> computer, open the summary report from
 MultiQC. To do so, go to your browser, and use <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">Open</span> <span class="pre">File</span></code>. Use the
 file navigator to select the following file</p>
 <blockquote>
 <div>~/BiATA/session1/data//multiqc_results/multiqc_report.html</div></blockquote>
-<p><a class="reference internal" href="_images/multiqc1.png"><img alt="image15" src="_images/multiqc1.png" style="width: 6.26389in; height: 4.30833in;" /></a></p>
-<p><a class="reference internal" href="_images/action.png"><img alt="image16" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> Scroll down through the report. The sequence quality
+<p><a class="reference internal" href="_images/multiqc1.png"><img alt="image6" src="_images/multiqc1.png" style="width: 6.26389in; height: 4.30833in;" /></a></p>
+<p><a class="reference internal" href="_images/action.png"><img alt="image2" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> Scroll down through the report. The sequence quality
 histograms show the following results from each file as two separate
 lines. The ‘Status Checks’ show a matrix of which samples passed check
 and which ones have problems.</p>
-<p><a class="reference internal" href="_images/question.png"><img alt="image17" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;What fraction of reads are duplicates?</p>
-<p><a class="reference internal" href="_images/info.png"><img alt="image18" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a> So, far we have looked at the raw files and assessed their
+<p><a class="reference internal" href="_images/question.png"><img alt="image3" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;What fraction of reads are duplicates?</p>
+<p><a class="reference internal" href="_images/info.png"><img alt="image1" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a> So, far we have looked at the raw files and assessed their
 content, but we have not done anything about removing duplicates,
 sequences with low quality scores or removal of the adaptors. So, lets
 start this process. The first step in the process is to make a database
@@ -168,7 +168,7 @@ relevant for decontaminating the sample. It is always good to routinely
 screen for human DNA (which may come from the host and/or staff
 performing the experiment). However, if the sample is say from mouse,
 you would want to download the the mouse genome.</p>
-<p><a class="reference internal" href="_images/action.png"><img alt="image19" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> In the following exercise, we are going to use two “genomes”
+<p><a class="reference internal" href="_images/action.png"><img alt="image2" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> In the following exercise, we are going to use two “genomes”
 already downloaded for you in the decontamination folder. To make this
 tutorial quicker and smaller in terms of file sizes, we are going to use
 PhiX (a common spike in) and just chromosome 10 from human.</p>
@@ -185,7 +185,7 @@ cat.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bowtie2-build GRCh38_phix.fasta  GRCh38_phix.index
 </pre></div>
 </div>
-<p><a class="reference internal" href="_images/info.png"><img alt="image20" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a> It is possible to automatically download a pre-indexed human
+<p><a class="reference internal" href="_images/info.png"><img alt="image1" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a> It is possible to automatically download a pre-indexed human
 genome in Bowtie2 format using the following command (but do not do this
 now, as this will take a while to download):</p>
 <blockquote>
@@ -199,7 +199,7 @@ now, as this will take a while to download):</p>
 </tbody>
 </table>
 </div></blockquote>
-<p><a class="reference internal" href="_images/action.png"><img alt="image21" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> Now we are going to use the <cite>GRCh38_phix</cite> database and clean-up
+<p><a class="reference internal" href="_images/action.png"><img alt="image2" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> Now we are going to use the <cite>GRCh38_phix</cite> database and clean-up
 our raw sequences. kneaddata is a helpful wrapper script for a number
 of pre-processing tools, including Bowtie2 to screen out contaminant
 sequences, and Trimmomatic to exclude low-quality sequences. We also
@@ -216,7 +216,7 @@ gunzip -c oral_human_example_1_splitaa.fastq.gz &gt; oral_human_example_1_splita
 kneaddata --remove-intermediate-output -t <span class="m">2</span> --input oral_human_example_1_splitaa.fastq --input oral_human_example_2_splitaa.fastq --output /opt/data/clean --reference-db /opt/data/decontamination/GRCh38_phix.index --trimmomatic-options  <span class="s2">&quot;SLIDINGWINDOW:4:20 MINLEN:50&quot;</span> --bowtie2-options <span class="s2">&quot;--very-sensitive --dovetail&quot;</span> --remove-intermediate-output
 </pre></div>
 </div>
-<p><a class="reference internal" href="_images/info.png"><img alt="image22" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;The options above are:</p>
+<p><a class="reference internal" href="_images/info.png"><img alt="image1" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;The options above are:</p>
 <blockquote>
 <div><table border="1" class="docutils">
 <colgroup>
@@ -244,7 +244,7 @@ FASTQs, will be removed.</p>
 </div></blockquote>
 <p><strong>Kneaddata generates multiple outputs in the “clean” directory,
 containing different 4 different files for each read.</strong></p>
-<p><a class="reference internal" href="_images/action.png"><img alt="image23" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;Using what you have learned previously, generate a fastqc
+<p><a class="reference internal" href="_images/action.png"><img alt="image2" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;Using what you have learned previously, generate a fastqc
 report for each of the <cite>oral_human_example_1_splitaa_kneaddata_paired</cite>
 files. &nbsp;Do this within the clean directory.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /opt/data/clean
@@ -252,29 +252,29 @@ mkdir fastqc_final
 &lt;you construct the command&gt;
 </pre></div>
 </div>
-<p><a class="reference internal" href="_images/action.png"><img alt="image24" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> Also generate a multiqc report and look at the sequence
+<p><a class="reference internal" href="_images/action.png"><img alt="image2" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> Also generate a multiqc report and look at the sequence
 quality historgrams.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /opt/data/clean
 mkdir multiqc
 &lt;you construct the command&gt;
 </pre></div>
 </div>
-<p><a class="reference internal" href="_images/action.png"><img alt="image25" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> View the multiQC report as before using your browser. You
+<p><a class="reference internal" href="_images/action.png"><img alt="image2" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> View the multiQC report as before using your browser. You
 should see something like this:</p>
-<p><a class="reference internal" href="_images/multiqc2.png"><img alt="image26" src="_images/multiqc2.png" style="width: 6.26389in; height: 4.30833in;" /></a></p>
-<p><a class="reference internal" href="_images/question.png"><img alt="image27" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a> Open the previous MultiQC report and see if they have
+<p><a class="reference internal" href="_images/multiqc2.png"><img alt="image7" src="_images/multiqc2.png" style="width: 6.26389in; height: 4.30833in;" /></a></p>
+<p><a class="reference internal" href="_images/question.png"><img alt="image3" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a> Open the previous MultiQC report and see if they have
 improved?</p>
-<p><a class="reference internal" href="_images/question.png"><img alt="image28" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a> Did sequences at the 5’ end become uniform? Why might that
+<p><a class="reference internal" href="_images/question.png"><img alt="image3" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a> Did sequences at the 5’ end become uniform? Why might that
 be? Is there anything that suggests that adaptor sequences were found?</p>
-<p><a class="reference internal" href="_images/action.png"><img alt="image29" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> To generate a summary file of how the sequence were
+<p><a href="#id1"><span class="problematic" id="id2">|</span></a>image29 To generate a summary file of how the sequence were
 categorised by Kneaddata, run the following command.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /opt/data
 kneaddata_read_count_table --input /opt/data/clean --output kneaddata_read_counts.txt
 less kneaddata_read_counts.txt
 </pre></div>
 </div>
-<p><a class="reference internal" href="_images/question.png"><img alt="image30" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a> What fraction of reads have been deemed to be contaminating?</p>
-<p><a class="reference internal" href="_images/info.png"><img alt="image31" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;The reads have now be decontaminated any can be uploaded to
+<p><a class="reference internal" href="_images/question.png"><img alt="image3" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a> What fraction of reads have been deemed to be contaminating?</p>
+<p><a class="reference internal" href="_images/info.png"><img alt="image1" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;The reads have now be decontaminated any can be uploaded to
 ENA, one of the INSDC members. It is beyond the scope of this course to
 include a tutorial on how to submit to ENA, but there is additional
 information available on how to do this in this Online Training guide
@@ -283,7 +283,7 @@ provided by EMBL-EBI</p>
 </div>
 <div class="section" id="part-2-assembly-and-co-assembly">
 <h2>Part 2 - Assembly and Co-assembly<a class="headerlink" href="#part-2-assembly-and-co-assembly" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="_images/info.png"><img alt="image32" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;Learning Objectives - in the following exercises you will
+<p><a class="reference internal" href="_images/info.png"><img alt="image1" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;Learning Objectives - in the following exercises you will
 learn how to perform a metagenomic assembly and to start some basic
 analysis of the output. Subsequently, we will demonstrate the
 application of co-assembly. Note, due to the complexity of metagenomics
@@ -305,7 +305,7 @@ have available. For example, very diverse samples with a lot of
 sequence data uses a lot of memory with SPAdes. In the following
 practicals we will demonstrate the use of metaSPAdes on a small sample
 and the use of MegaHIT for performing co-assembly.</p>
-<p><a class="reference internal" href="_images/action.png"><img alt="image33" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;Using the sequences that you have previously QC-ed, run
+<p><a class="reference internal" href="_images/action.png"><img alt="image2" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;Using the sequences that you have previously QC-ed, run
 metaspades. To make things faster, we are going to turn-off metaspades
 own&nbsp;read error correction method, by specifying the command
 –only-assembler.</p>
@@ -320,8 +320,8 @@ metaspades.py <span class="se">\</span>
         -o /opt/data/assembly
 </pre></div>
 </div>
-<p><a class="reference internal" href="_images/info.png"><img alt="image34" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;This takes about 1 hour to complete.</p>
-<p><a class="reference internal" href="_images/action.png"><img alt="image35" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;Once this completes, we can investigate the assembly. The
+<p><a class="reference internal" href="_images/info.png"><img alt="image1" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;This takes about 1 hour to complete.</p>
+<p><a class="reference internal" href="_images/action.png"><img alt="image2" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;Once this completes, we can investigate the assembly. The
 first step is to simply look at the contigs.fasta file.</p>
 <p>Now take the first 40 lines of the sequence and perform a blast search
 at NCBI (<a class="reference external" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">https://blast.ncbi.nlm.nih.gov/Blast.cgi</a>, choose
@@ -331,23 +331,23 @@ perform the following:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>head -41 contigs.fasta
 </pre></div>
 </div>
-<p><a class="reference internal" href="_images/blast.png"><img alt="image36" src="_images/blast.png" style="width: 6.26389in; height: 3.86181in;" /></a></p>
-<p><a class="reference internal" href="_images/question.png"><img alt="image37" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;Which species do you think this sequence may be coming from?
+<p><a class="reference internal" href="_images/blast.png"><img alt="image8" src="_images/blast.png" style="width: 6.26389in; height: 3.86181in;" /></a></p>
+<p><a class="reference internal" href="_images/question.png"><img alt="image3" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;Which species do you think this sequence may be coming from?
 Does this make sense as a human oral bacteria? Are you surprised by this
 result at all?</p>
-<p><a class="reference internal" href="_images/action.png"><img alt="image38" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> Now let us consider some statistics about the entire assembly</p>
+<p><a class="reference internal" href="_images/action.png"><img alt="image2" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> Now let us consider some statistics about the entire assembly</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /opt/data/assembly
 assembly_stats scaffolds.fasta
 </pre></div>
 </div>
-<p><a class="reference internal" href="_images/info.png"><img alt="image39" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;This will output two simple tables in JSON format, but it is
+<p><a class="reference internal" href="_images/info.png"><img alt="image1" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;This will output two simple tables in JSON format, but it is
 fairly simple to read. There is a section that corresponds to the
 scaffolds in the assembly and a section that corresponds to the contigs.</p>
-<p><a class="reference internal" href="_images/question.png"><img alt="image40" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;What is the length of longest and shortest contigs?</p>
-<p><a class="reference internal" href="_images/question.png"><img alt="image41" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;What is the N50 of the assembly? Given that are input
+<p><a class="reference internal" href="_images/question.png"><img alt="image3" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;What is the length of longest and shortest contigs?</p>
+<p><a class="reference internal" href="_images/question.png"><img alt="image3" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;What is the N50 of the assembly? Given that are input
 sequences were ~150bp long paired-end sequences, what does this tell you
 about the assembly?</p>
-<p><a class="reference internal" href="_images/info.png"><img alt="image42" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;N50 is a measure to describe the quality of assembled genomes
+<p><a class="reference internal" href="_images/info.png"><img alt="image1" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;N50 is a measure to describe the quality of assembled genomes
 that are fragmented in contigs of different length. &nbsp;We can apply this
 with some caution to metagenomes, where we can use it to crudely assess
 the contig length that covers 50% of the total assembly. &nbsp;Essentially
@@ -355,7 +355,7 @@ the longer the better, but this only makes sense when thinking about
 alike metagenomes. Note, N10 is the minimum contig length to cover 10
 percent of the metagenome. N90 is the minimum contig length to cover 90
 percent of the metagenome.</p>
-<p><a class="reference internal" href="_images/action.png"><img alt="image43" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;Bandage (a Bioinformatics Application for Navigating De novo
+<p><a class="reference internal" href="_images/action.png"><img alt="image2" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;Bandage (a Bioinformatics Application for Navigating De novo
 Assembly Graphs Easily), is a program that creates interactive
 visualisations of assembly graphs. They can be useful for finding
 sections of the graph, such as rRNA, or to try to find parts of a
@@ -365,7 +365,7 @@ plus much more.&nbsp;The following guide allows you to look at the assembly
 graph. &nbsp;Normally, I would recommend looking at the ‘
 assembly_graph.fastg, but our assembly is quite fragmented, so we will
 load up the assembly_graph_after_simplification.gfa.</p>
-<p><a class="reference internal" href="_images/action.png"><img alt="image44" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> At the terminal, type</p>
+<p><a class="reference internal" href="_images/action.png"><img alt="image2" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> At the terminal, type</p>
 <blockquote>
 <div>Bandage</div></blockquote>
 <p>In the the Bandage GUI perform the following</p>
@@ -379,11 +379,11 @@ drawing” panel on the left side perform the following:</p>
 <div><p>Set Scope to ‘Entire graph’</p>
 <p>The click on Draw graph</p>
 </div></blockquote>
-<p><a class="reference internal" href="_images/action.png"><img alt="image45" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;Use the sliders in the main panel to move around and look at
+<p><a class="reference internal" href="_images/action.png"><img alt="image2" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;Use the sliders in the main panel to move around and look at
 each distinct part of the assembly graph.</p>
-<p><a class="reference internal" href="_images/question.png"><img alt="image46" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;Can you find any large, complex parts of the graph? If so,
+<p><a class="reference internal" href="_images/question.png"><img alt="image3" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;Can you find any large, complex parts of the graph? If so,
 what do they look like.</p>
-<p><a class="reference internal" href="_images/action.png"><img alt="image47" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> In this particular sample, we believe that strains related to
+<p><a class="reference internal" href="_images/action.png"><img alt="image2" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> In this particular sample, we believe that strains related to
 the species <em>Rothia dentocariosa,</em> a Gram-positive, round- to rod-shaped
 bacteria that is part of the normal community of microbes residing in
 the mouth and respiratory tract, should be present in our sample. While
@@ -406,8 +406,8 @@ the assembly graph.</p>
 <p>The click on Draw graph</p>
 </div></blockquote>
 <p>You should then see something like this:</p>
-<p><a class="reference internal" href="_images/bandage.png"><img alt="image48" src="_images/bandage.png" style="width: 6.26389in; height: 3.67569in;" /></a></p>
-<p><a class="reference internal" href="_images/info.png"><img alt="image49" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;In the following steps of this exercise, we will look at
+<p><a class="reference internal" href="_images/bandage.png"><img alt="image9" src="_images/bandage.png" style="width: 6.26389in; height: 3.67569in;" /></a></p>
+<p><a class="reference internal" href="_images/info.png"><img alt="image1" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;In the following steps of this exercise, we will look at
 performing co-assembly of multiple datasets. Due to computational
 limitations, we can only look a example datasets.&nbsp; However, the
 principles are the same. We have also pre-calculated some assemblies for
@@ -416,13 +416,13 @@ have a single paired-end assembly.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>megahit -1 clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq -2 clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq -o  coassembly/assembly1 -t <span class="m">2</span> --k-list <span class="m">23</span>,51,77
 </pre></div>
 </div>
-<p><a class="reference internal" href="_images/action.png"><img alt="image50" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> Now run the assembly_stats on the contigs for this assembly.</p>
+<p><a class="reference internal" href="_images/action.png"><img alt="image2" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> Now run the assembly_stats on the contigs for this assembly.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /opt/data
 assembly_stats coassembly/assembly1/final.contigs.fa
 </pre></div>
 </div>
-<p><a class="reference internal" href="_images/question.png"><img alt="image51" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a> How do these differ to the ones you generated previously? What may account for these differences?</p>
-<p><a class="reference internal" href="_images/info.png"><img alt="image52" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;We have also generated the first coassembly using MegaHIT.
+<p><a class="reference internal" href="_images/question.png"><img alt="image3" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a> How do these differ to the ones you generated previously? What may account for these differences?</p>
+<p><a class="reference internal" href="_images/info.png"><img alt="image1" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;We have also generated the first coassembly using MegaHIT.
 This was produced using the following command. &nbsp;To specify the files, we
 put all of the forward file as a comma separated list, and all of the
 reversed as a comma separated list, which should be ordered that same in
@@ -431,14 +431,14 @@ both, such that the mate pairs match up.</p>
 megahit -1    clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq,clean_other/oral_human_example_1_splitab_kneaddata_paired_1.fastq  -2 clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq,clean_other/oral_human_example_1_splitab_kneaddata_paired_2.fastq -o coassembly/assembly2 -t <span class="m">2</span> --k-list <span class="m">23</span>,51,77
 </pre></div>
 </div>
-<p><a class="reference internal" href="_images/action.png"><img alt="image53" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> Now perform another co-assembly, depending on the computer
+<p><a class="reference internal" href="_images/action.png"><img alt="image2" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a> Now perform another co-assembly, depending on the computer
 you have, either change one of the previous fastq files for the</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>megahit -1 clean_other/oral_human_example_1_splitab_kneaddata_paired_1.fastq,clean_other/oral_human_example_1_splitac_kneaddata_paired_1.fastq,clean/oral_human_example_1_splitaa_kneaddata_paired_1.fastq -2 clean_other/oral_human_example_1_splitab_kneaddata_paired_2.fastq,clean_other/oral_human_example_1_splitac_kneaddata_paired_2.fastq,clean/oral_human_example_1_splitaa_kneaddata_paired_2.fastq -o coassembly/assembly3 -t <span class="m">2</span> --k-list <span class="m">23</span>,51,77
 </pre></div>
 </div>
-<p><a class="reference internal" href="_images/info.png"><img alt="image54" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;This takes about 20-30 minutes. Also, if you are using a
+<p><a class="reference internal" href="_images/info.png"><img alt="image1" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;This takes about 20-30 minutes. Also, if you are using a
 laptop, make sure that it does not go into standby mode.</p>
-<p><a class="reference internal" href="_images/action.png"><img alt="image55" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;You should now have three different assemblies, two provide
+<p><a class="reference internal" href="_images/action.png"><img alt="image2" src="_images/action.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;You should now have three different assemblies, two provide
 and one generated by yourselves. Now let us compare the assemblies.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /opt/data
 assembly_stats coassembly/assembly1/final.contigs.fa
@@ -446,9 +446,9 @@ assembly_stats coassembly/assembly2/final.contigs.fa
 assembly_stats coassembly/assembly3/final.contigs.fa
 </pre></div>
 </div>
-<p><a class="reference internal" href="_images/info.png"><img alt="image56" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;We only have contigs.fa from MegaHIT, so the contigs and
+<p><a class="reference internal" href="_images/info.png"><img alt="image1" src="_images/info.png" style="width: 0.26667in; height: 0.26667in;" /></a>&nbsp;We only have contigs.fa from MegaHIT, so the contigs and
 scaffold sections are the same.</p>
-<p><a class="reference internal" href="_images/question.png"><img alt="image57" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a> Has the assembly improved? If so how?</p>
+<p><a class="reference internal" href="_images/question.png"><img alt="image3" src="_images/question.png" style="width: 0.26667in; height: 0.26667in;" /></a> Has the assembly improved? If so how?</p>
 </div>
 </div>
 

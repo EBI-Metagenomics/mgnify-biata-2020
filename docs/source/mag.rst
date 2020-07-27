@@ -43,7 +43,7 @@ Generating metagenome assembled genomes
 
 |image1|\ Learning Objectives - in the following exercises you will
 learn how to bin an assembly, assess the quality of this assembly with
-checkM and then visualise in placement of these genomes within a
+checkM and then visualise a placement of these genomes within a
 reference tree. 
 
 |image1|\  As with the assembly process, there are many software tools available for
@@ -69,7 +69,7 @@ Figure 1. MetaBAT workflow (Kang, et al. *PeerJ* 2015).
 
 |image1|\  Prior to running MetaBAT, we need to generate coverage
 statistics by mapping reads to the contigs. To do this, we can use bwa
-(http://bio-bwa.sourceforge.net/) and then the samtools s/w
+(http://bio-bwa.sourceforge.net/) and then the samtools software
 (`http://www.htslib.org <http://www.htslib.org/>`__) to reformat the
 output. Again, this can take some time, so we have run it in advance. To
 repeat the process, you would run the following commands:
@@ -185,9 +185,7 @@ you will have the taxonomic assignment and quality assessment of each
 bin in the file **MAGs_checkm.tab** with the corresponding level of
 **completeness**, **contamination** and **strain heterogeneity** (Fig.
 2). A quick way to infer the overall quality of the bin is to calculate
-the level of **completeness -**
-
-**5*contamination**. You should be aiming for an overall score of at
+the level of **(completeness - 5*contamination)**. You should be aiming for an overall score of at
 least **70-80%**.
 
  |image5|\
@@ -195,7 +193,7 @@ least **70-80%**.
 Figure 2. Example output of CheckM
 
 Before we can visualize and plot the tree we will need to convert the
-reference ID names used by checkm to taxon names. We have already
+reference ID names used by CheckM to taxon names. We have already
 prepared a mapping file for renaming the tree (**rename_list.tab**). We
 can then do this easily with the **newick utilities**
 (http://cegg.unige.ch/newick_utils).
@@ -216,10 +214,7 @@ of Life** (**iTOL**): http://itol.embl.de/index.shtml
 reformat the tree with **FigTree**
 (http://tree.bio.ed.ac.uk/software/figtree/).
 
-You will need to copy the FigTree folder from Penelope to your home dir.
-To do this, find the FigTree folder on Penelope (under Metagenomics- Day
-3 etc), right click, and choose copy, then open your home dir and right
-click to paste. You should then be able to run FigTree as follows:
+You should be able to run FigTree as follows:
 
 .. code-block:: bash
 
@@ -227,7 +222,7 @@ click to paste. You should then be able to run FigTree as follows:
 
 |image3|\  Open the **renamed.tree** file with **FigTree** and then
 select from the toolbar **File -> Export Trees**. In the **Tree file
-format** select **Newick** and export the file as **renamed.nwk**
+format** select **Newick** and export the file as **renamed.nwk** (choose a name you will recognise if you plan to use the shared account described below).
 
 |image3|\  To use **iTOL** you will need a user account. For the
 purpose of this tutorial we have already created one for you with an
@@ -264,8 +259,7 @@ blank correspond to the **target genomes** we placed in the tree.
 Highlighting each tip of the phylogeny will let you see the whole
 taxon/sample name. Feel free to play around with the plot.
 
-|image4|\  Does the CheckM taxonomic classification make sense? What
-about the unknowns? What is their most likely taxon?
+|image4|\  Does the CheckM taxonomic classification make sense? What about the unknowns? What is their most likely taxon?
 
 .. |image1| image:: media/info.png
    :width: 0.26667in
