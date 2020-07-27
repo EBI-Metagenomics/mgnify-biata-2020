@@ -144,13 +144,13 @@ and **strain heterogeneity** of the predicted genome. 
 
 |image3|\ Before we start, we need to configure checkM.
 
-    mkdir checkm_data
+    mkdir checkm_data
+        
+    mv checkm_data_2015_01_16.tar.gz checkm_data
+    
+    tar zxvf checkm_data_2015_01_16.tar.gz
 
-    mv checkm_data_2015_01_16.tar.gz checkm_data
-
-    tar zxvf checkm_data_2015_01_16.tar.gz
-
-    checkm data setRoot /opt/data/checkm_data
+    checkm data setRoot /opt/data/checkm_data
 
 This program has some handy tools not only for quality control, but also
 for taxonomic classification, assessing coverage, building a
