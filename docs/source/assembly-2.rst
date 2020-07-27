@@ -115,3 +115,5 @@ Now we will look at some assembly data that has been analysed by MGnify.
 |action| Zoom into that region to see the predicted regions in more detail. Have a look at the information about the various transport-related genes. 
 
 |question| What region of the contig is predicted to code for a major facilitator transporter? 
+
+|info| There are lots of different visualisation options available within the contig viewer. Take some time now to investigate the various options, and play about with it by looking at a few different contigs and the anotations they contain.
