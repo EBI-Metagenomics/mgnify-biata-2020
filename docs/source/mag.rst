@@ -214,10 +214,7 @@ of Life** (**iTOL**): http://itol.embl.de/index.shtml
 reformat the tree with **FigTree**
 (http://tree.bio.ed.ac.uk/software/figtree/).
 
-You will need to copy the FigTree folder from Penelope to your home dir.
-To do this, find the FigTree folder on Penelope (under Metagenomics- Day
-3 etc), right click, and choose copy, then open your home dir and right
-click to paste. You should then be able to run FigTree as follows:
+You should be able to run FigTree as follows:
 
 .. code-block:: bash
 
@@ -225,7 +222,7 @@ click to paste. You should then be able to run FigTree as follows:
 
 |image3|\  Open the **renamed.tree** file with **FigTree** and then
 select from the toolbar **File -> Export Trees**. In the **Tree file
-format** select **Newick** and export the file as **renamed.nwk**
+format** select **Newick** and export the file as **renamed.nwk** (choose a name you will recognise if you plan to use the shared account described below).
 
 |image3|\  To use **iTOL** you will need a user account. For the
 purpose of this tutorial we have already created one for you with an
