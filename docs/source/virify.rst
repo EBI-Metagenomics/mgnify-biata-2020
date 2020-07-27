@@ -16,7 +16,7 @@ Viral detection and classification
 .. code-block:: bash
 
     wget http://ftp.ebi.ac.uk/pub/databases/metagenomics/mgnify_courses/biata_2020/virify_tutorial.tar.gz
-    tar -xzvf virify_tutorial.tar.gz``
+    tar -xzvf virify_tutorial.tar.gz
 
 Now change into the **virify_tutorial** directory and setup the environment by running the following commands in your current terminal session:
 
