@@ -13,6 +13,7 @@
 Assembly analysis
 *****************
 
+In the presentation we will cover:
 
 - Overview of MGnify annotation pipeline
 - Taxonomic assignment
@@ -20,8 +21,8 @@ Assembly analysis
 - Pathways/systems
 - Using the contig viewer
 
-MGnify hands-on exercises
-#########################
+Part2 - MGnify hands-on exercises
+##################################
 
 For this session we will look at some of the data and analyses that are available from MGnify. We will navigate the resource, try out different ways to search for interesting samples/studies, and then investigate the analysis results that are available for assemblies.
 
