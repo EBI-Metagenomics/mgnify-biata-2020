@@ -274,7 +274,7 @@ improved? 
 |image3|\  Did sequences at the 5’ end become uniform? Why might that
 be? Is there anything that suggests that adaptor sequences were found? 
 
-|image29\  To generate a summary file of how the sequence were
+|image29|\  To generate a summary file of how the sequence were
 categorised by Kneaddata, run the following command.  
 
 .. code-block:: bash
