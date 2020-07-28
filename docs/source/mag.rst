@@ -120,7 +120,7 @@ MetaBAT:
     # now run MetaBAT
 
     cd /opt/data/assemblies/
-    metabat2 —inFile  contigs.fasta   --outFile contigs.fasta.metabat-bins2000/bin -- abdFile contigs.fasta.depth.txt --minContig 2000
+    metabat2 --inFile  contigs.fasta --outFile contigs.fasta.metabat-bins2000/bin --abdFile contigs.fasta.depth.txt --minContig 2000
 
 |image3|\ Once the binning process is complete, each bin will be
 grouped into a multi-fasta file with a name structure of
